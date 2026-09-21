@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>WishCraft ❤️ | Create Beautiful Wishes</title>
+
+  <!-- QR Generator -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff7fa;
+      color: #29202a;
+      line-height: 1.6;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #f0dce4;
+    }
+
+    nav {
+      max-width: 1100px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #d6336c;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #4b3942;
+      margin-left: 18px;
+      font-weight: 600;
+    }
+
+    .hero {
+      min-height: 82vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 60px 20px;
+      background:
+        radial-gradient(circle at 20% 20%, #ffd6e5 0, transparent 25%),
+        radial-gradient(circle at 80% 30%, #ffe5c7 0, transparent 25%),
+        linear-gradient(135deg, #fff7fa, #fff0f5);
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .heart {
+      font-size: 60px;
+      animation: beat 1.4s infinite;
+    }
+
+    @keyframes beat {
+      0%,100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    h1 {
+      font-size: clamp(40px, 8vw, 76px);
+      margin: 10px 0;
+      color: #b5174b;
+    }
+
+    .hero p {
+      font-size: 19px;
+      color: #6b5962;
+      max-width: 650px;
+      margin: auto;
+    }
+
+    .buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      cursor: pointer;
+      padding: 13px 22px;
+      border-radius: 999px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+    }
+
+    .primary {
+      background: #d6336c;
+      color: white;
+      box-shadow: 0 8px 25px rgba(214,51,108,0.25);
+    }
+
+    .secondary {
+      background: white;
+      color: #b5174b;
+      border: 1px solid #e8b8c9;
+    }
+
+    section {
+      padding: 70px 20px;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 36px;
+      color: #9d174d;
+      margin-bottom: 12px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: #75656c;
+      margin-bottom: 35px;
+    }
+
+    .card {
+      background: white;
+      border: 1px solid #f0dce4;
+      border-radius: 24px;
+      padding: 25px;
+      box-shadow: 0 12px 35px rgba(80,30,50,0.08);
+      margin-bottom: 25px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      margin: 15px 0 7px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #e4ccd5;
+      border-radius: 13px;
+      font-size: 16px;
+      outline: none;
+      background: #fffafb;
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: #d6336c;
+    }
+
+    .letter {
+      margin-top: 25px;
+      padding: 35px;
+      border-radius: 20px;
+      background: linear-gradient(145deg, #fffafc, #fff0f5);
+      border: 1px solid #f2cbd8;
+      white-space: pre-wrap;
+      min-height: 220px;
+      font-family: Georgia, serif;
+      font-size: 18px;
+    }
+
+    .letter-title {
+      text-align: center;
+      color: #b5174b;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .qr-area {
+      text-align: center;
+      margin-top: 25px;
+    }
+
+    #qrcode {
+      display: inline-block;
+      padding: 15px;
+      background: white;
+      border-radius: 15px;
+      margin: 15px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: white;
+      border: 1px solid #f0dce4;
+      padding: 25px;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #24141c;
+      color: #e9dce2;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    footer strong {
+      color: #ff9dbb;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media(max-width: 700px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        display: none;
+      }
+
+      section {
+        padding: 50px 15px;
+      }
+
+      .letter {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <div class="logo">❤️ WishCraft</div>
+
+    <div>
+      <a href="#letter">Letter</a>
+      <a href="#qr">QR Code</a>
+      <a href="#features">Features</a>
+    </div>
+  </nav>
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-content">
+
+    <div class="heart">❤️</div>
+
+    <h1>Make Your Wish Beautiful</h1>
+
+    <p>
+      Create a beautiful personal message, love letter and
+      shareable QR code for someone special.
+    </p>
+
+    <div class="buttons">
+
+      <a href="#letter">
+        <button class="primary">Create Your Letter 💌</button>
+      </a>
+
+      <a href="#qr">
+        <button class="secondary">Create QR Code 📱</button>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<section id="features">
+
+  <div class="container">
+
+    <h2 class="section-title">Everything in One Place</h2>
+
+    <p class="section-subtitle">
+      Create something special in just a few clicks.
+    </p>
+
+    <div class="feature-grid">
+
+      <div class="feature">
+        <div class="feature-icon">💌</div>
+        <h3>Love Letters</h3>
+        <p>Create beautiful personalised messages.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">📱</div>
+        <h3>QR Generator</h3>
+        <p>Turn any message or link into a QR code.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-icon">📲</div>
+        <h3>Easy Sharing</h3>
+        <p>Share your creation through WhatsApp.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- LETTER GENERATOR -->
+
+<section id="letter">
+
+  <div class="container">
+
+    <h2 class="section-title">Create Your Letter 💌</h2>
+
+    <p class="section-subtitle">
+      Fill the details and create your personalised message.
+    </p>
+
+    <div class="card">
+
+      <label>Your Name</label>
+      <input
+        id="fromName"
+        type="text"
+        placeholder="Example: Rahul"
+      >
+
+      <label>Special Person's Name</label>
+      <input
+        id="toName"
+        type="text"
+        placeholder="Example: Priya"
+      >
+
+      <label>Choose a style</label>
+
+      <select id="styleSelect">
+
+        <option value="love">
+          Romantic ❤️
+        </option>
+
+        <option value="birthday">
+          Birthday 🎂
+        </option>
+
+        <option value="friend">
+          Friendship 🫶
+        </option>
+
+        <option value="custom">
+          Custom ✨
+        </option>
+
+      </select>
+
+      <label>Your Message</label>
+
+      <textarea
+        id="message"
+        placeholder="Write something from your heart..."
+      ></textarea>
+
+      <div class="buttons">
+
+        <button
+          class="primary"
+          onclick="generateLetter()"
+        >
+          Generate Letter 💖
+        </button>
+
+        <button
+          class="secondary"
+          onclick="clearLetter()"
+        >
+          Clear
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div
+      id="letterResult"
+      class="card hidden"
+    >
+
+      <div class="letter">
+
+        <div class="letter-title">
+          A Special Message 💖
+        </div>
+
+        <div id="letterText"></div>
+
+      </div>
+
+      <div class="buttons">
+
+        <button
+          class="primary"
+          onclick="window.print()"
+        >
+          Print / Save PDF 🖨️
+        </button>
+
+        <button
+          class="secondary"
+          onclick="shareWhatsApp()"
+        >
+          Share on WhatsApp 📲
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- QR GENERATOR -->
+
+<section id="qr">
+
+  <div class="container">
+
+    <h2 class="section-title">QR Code Generator 📱</h2>
+
+    <p class="section-subtitle">
+      Enter a message or website link and create a QR code instantly.
+    </p>
+
+    <div class="card">
+
+      <label>Text or Website Link</label>
+
+      <textarea
+        id="qrText"
+        placeholder="Example: https://example.com"
+      ></textarea>
+
+      <div class="buttons">
+
+        <button
+          class="primary"
+          onclick="generateQR()"
+        >
+          Generate QR 🔳
+        </button>
+
+        <button
+          class="secondary"
+          onclick="clearQR()"
+        >
+          Clear
+        </button>
+
+      </div>
+
+      <div
+        id="qrArea"
+        class="qr-area hidden"
+      >
+
+        <div id="qrcode"></div>
+
+        <br>
+
+        <button
+          class="primary"
+          onclick="downloadQR()"
+        >
+          Download QR 📥
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <p>
+    Made with ❤️ by <strong>WishCraft</strong>
+  </p>
+
+  <p>
+    Create • Share • Make Someone Smile ✨
+  </p>
+
+</footer>
+
+
+<script>
+
+  let currentQR = null;
+
+
+  // LETTER GENERATOR
+
+  function generateLetter() {
+
+    const from =
+      document.getElementById("fromName").value.trim();
+
+    const to =
+      document.getElementById("toName").value.trim();
+
+    const message =
+      document.getElementById("message").value.trim();
+
+    const style =
+      document.getElementById("styleSelect").value;
+
+
+    if (!to || !message) {
+
+      alert("Please enter the person's name and your message ❤️");
+
+      return;
+    }
+
+
+    let opening = "";
+
+    if (style === "love") {
+
+      opening =
+        `Dear ${to},\n\n`;
+
+    } else if (style === "birthday") {
+
+      opening =
+        `Happy Birthday, ${to}! 🎂❤️\n\n`;
+
+    } else if (style === "friend") {
+
+      opening =
+        `Dear ${to},\n\n`;
+
+    } else {
+
+      opening =
+        `Dear ${to},\n\n`;
+
+    }
+
+
+    let ending = "";
+
+    if (from) {
+
+      ending =
+        `\n\nWith lots of love,\n${from} ❤️`;
+
+    } else {
+
+      ending =
+        `\n\nWith lots of love ❤️`;
+
+    }
+
+
+    const finalLetter =
+      opening +
+      message +
+      ending;
+
+
+    document.getElementById("letterText").textContent =
+      finalLetter;
+
+    document
+      .getElementById("letterResult")
+      .classList.remove("hidden");
+
+    document
+      .getElementById("letterResult")
+      .scrollIntoView({
+        behavior: "smooth"
+      });
+
+  }
+
+
+  function clearLetter() {
+
+    document.getElementById("fromName").value = "";
+
+    document.getElementById("toName").value = "";
+
+    document.getElementById("message").value = "";
+
+    document
+      .getElementById("letterResult")
+      .classList.add("hidden");
+
+  }
+
+
+  // WHATSAPP SHARE
+
+  function shareWhatsApp() {
+
+    const text =
+      document.getElementById("letterText").innerText;
+
+    const url =
+      "https://wa.me/?text=" +
+      encodeURIComponent(text);
+
+    window.open(url, "_blank");
+
+  }
+
+
+  // QR GENERATOR
+
+  function generateQR() {
+
+    const text =
+      document.getElementById("qrText").value.trim();
+
+    if (!text) {
+
+      alert("Please enter some text or a link 📱");
+
+      return;
+
+    }
+
+
+    document.getElementById("qrcode").innerHTML = "";
+
+    currentQR =
+      new QRCode(
+        document.getElementById("qrcode"),
+        {
+          text: text,
+          width: 220,
+          height: 220,
+          correctLevel: QRCode.CorrectLevel.H
+        }
+      );
+
+
+    document
+      .getElementById("qrArea")
+      .classList.remove("hidden");
+
+  }
+
+
+  function clearQR() {
+
+    document.getElementById("qrText").value = "";
+
+    document.getElementById("qrcode").innerHTML = "";
+
+    document
+      .getElementById("qrArea")
+      .classList.add("hidden");
+
+    currentQR = null;
+
+  }
+
+
+  // DOWNLOAD QR
+
+  function downloadQR() {
+
+    const qr =
+      document.querySelector("#qrcode img");
+
+    if (!qr) {
+
+      alert("First generate a QR code.");
+
+      return;
+
+    }
+
+
+    const link =
+      document.createElement("a");
+
+    link.href = qr.src;
+
+    link.download = "wishcraft-qr.png";
+
+    document.body.appendChild(link);
+
+    link.click();
+
+    document.body.removeChild(link);
+
+  }
+
+</script>
+
+</body>
+  </html>
