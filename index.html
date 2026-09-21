@@ -3,46 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
 <title>WishCraft ❤️</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+
+html{
+ scroll-behavior:smooth;
+}
+
 body{
  margin:0;
  font-family:Georgia,serif;
  background:#08030a;
  color:white;
- overflow-x:hidden
+ overflow-x:hidden;
 }
-button,input,textarea,select{font:inherit}
-button{cursor:pointer}
+
+button,input,textarea{
+ font:inherit;
+}
+
+button{
+ cursor:pointer;
+}
 
 #app{
  min-height:100vh;
  position:relative;
  overflow:hidden;
+
  background:
  radial-gradient(circle at 20% 20%,#5c0b32 0,transparent 30%),
  radial-gradient(circle at 80% 80%,#32105d 0,transparent 30%),
- linear-gradient(135deg,#09030c,#210718,#09030c)
+ linear-gradient(135deg,#09030c,#210718,#09030c);
 }
+
+/* ================= PARTICLES ================= */
 
 .particle{
  position:fixed;
- bottom:-40px;
- font-size:20px;
+ bottom:-50px;
  pointer-events:none;
- animation:float 7s linear forwards;
- z-index:1
+ animation:floatUp linear forwards;
+ z-index:10;
 }
-@keyframes float{
- from{transform:translateY(0) rotate(0);opacity:0}
- 15%{opacity:1}
- to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+
+@keyframes floatUp{
+ 0%{
+  transform:translateY(0) rotate(0) scale(.5);
+  opacity:0;
+ }
+ 15%{
+  opacity:1;
+ }
+ 100%{
+  transform:translateY(-115vh) rotate(360deg) scale(1.2);
+  opacity:0;
+ }
 }
+
+/* ================= SCREENS ================= */
 
 .screen{
  min-height:100vh;
@@ -51,33 +75,40 @@ button{cursor:pointer}
  justify-content:center;
  padding:30px 18px;
  position:relative;
- z-index:2
+ z-index:2;
 }
-.screen.active{display:flex}
+
+.screen.active{
+ display:flex;
+}
 
 .box{
  width:min(700px,100%);
  text-align:center;
  padding:35px 22px;
+
  border:1px solid rgba(255,255,255,.16);
  border-radius:30px;
+
  background:rgba(255,255,255,.07);
  backdrop-filter:blur(18px);
- box-shadow:0 20px 80px rgba(0,0,0,.45)
+
+ box-shadow:0 20px 80px rgba(0,0,0,.45);
 }
 
 .logo{
  font-size:20px;
  color:#ff9fc5;
- letter-spacing:2px;
- margin-bottom:25px
+ letter-spacing:3px;
+ margin-bottom:25px;
 }
 
 .bigheart{
  font-size:95px;
  animation:heartbeat 1.3s infinite;
- filter:drop-shadow(0 0 25px #ff397d)
+ filter:drop-shadow(0 0 25px #ff397d);
 }
+
 @keyframes heartbeat{
  0%,100%{transform:scale(1)}
  50%{transform:scale(1.18)}
@@ -86,157 +117,302 @@ button{cursor:pointer}
 h1{
  font-size:clamp(38px,8vw,75px);
  margin:12px 0;
+
  background:linear-gradient(90deg,#fff,#ff91ba,#fff);
  -webkit-background-clip:text;
- color:transparent
+ background-clip:text;
+ color:transparent;
 }
 
-h2{font-size:34px;margin:8px 0 25px}
-p{color:#eadde4;font-size:17px;line-height:1.6}
+h2{
+ font-size:34px;
+ margin:8px 0 25px;
+}
+
+p{
+ color:#eadde4;
+ font-size:17px;
+ line-height:1.6;
+}
 
 .btn{
  border:0;
  border-radius:50px;
  padding:14px 25px;
  margin:8px;
+
  font-weight:bold;
  color:white;
+
  background:linear-gradient(135deg,#ff397d,#a51cff);
+
  box-shadow:0 10px 30px rgba(255,40,120,.3);
- transition:.2s
+
+ transition:.2s;
 }
-.btn:hover{transform:translateY(-3px) scale(1.02)}
+
+.btn:hover{
+ transform:translateY(-3px) scale(1.02);
+}
+
 .btn.secondary{
  background:rgba(255,255,255,.1);
- border:1px solid rgba(255,255,255,.2)
+ border:1px solid rgba(255,255,255,.2);
 }
+
+/* ================= FORM ================= */
 
 .progress{
  width:100%;
  height:7px;
+
  background:rgba(255,255,255,.1);
  border-radius:10px;
  overflow:hidden;
- margin-bottom:25px
+ margin-bottom:25px;
 }
+
 .progress i{
  display:block;
  height:100%;
  width:0;
+
  background:linear-gradient(90deg,#ff397d,#ffb3d0);
- transition:.4s
+
+ transition:.4s;
 }
 
 .field{
  width:100%;
  padding:16px;
  margin:8px 0 18px;
+
  border-radius:16px;
  border:1px solid rgba(255,255,255,.2);
+
  background:rgba(0,0,0,.25);
  color:white;
- outline:none
+
+ outline:none;
 }
-textarea.field{min-height:130px;resize:vertical}
+
+textarea.field{
+ min-height:130px;
+ resize:vertical;
+}
 
 .options{
  display:grid;
  grid-template-columns:1fr 1fr;
- gap:12px
+ gap:12px;
 }
+
 .option{
  padding:17px;
+
  border-radius:18px;
  border:1px solid rgba(255,255,255,.16);
+
  background:rgba(255,255,255,.07);
+
  color:white;
- transition:.2s
+
+ transition:.2s;
 }
-.option:hover,.option.selected{
+
+.option:hover,
+.option.selected{
  background:linear-gradient(135deg,#ff397d55,#a51cff55);
  border-color:#ff79a9;
- transform:scale(1.02)
+ transform:scale(1.02);
 }
+
+/* ================= FINAL SURPRISE ================= */
 
 .final{
  min-height:100vh;
  padding:40px 18px 100px;
  text-align:center;
- position:relative
+ position:relative;
 }
 
 .final-card{
  max-width:760px;
  margin:auto;
- padding:35px 20px;
+ padding:40px 20px;
+
  border-radius:35px;
+
  background:
  radial-gradient(circle at top,#7d1649,#270b2e 45%,#10040f);
+
  border:1px solid #ff86b5;
- box-shadow:0 0 80px rgba(255,35,120,.25)
+
+ box-shadow:
+ 0 0 80px rgba(255,35,120,.25);
+
+ overflow:hidden;
 }
 
-.final-card h1{font-size:55px}
-.message{
+.final-card h1{
+ font-size:clamp(40px,8vw,65px);
+}
+
+.final-message{
  margin:25px auto;
  max-width:600px;
- padding:25px;
+
+ padding:28px;
+
  border-radius:25px;
+
  background:rgba(255,255,255,.08);
+
  font-size:21px;
  line-height:1.8;
- white-space:pre-wrap
+
+ white-space:pre-wrap;
 }
 
-.reveal{
- animation:reveal 1.4s ease both
+/* ================= VIDEO-LIKE ANIMATION ================= */
+
+.videoAnimation{
+ animation:videoReveal 1.8s cubic-bezier(.2,.8,.2,1) both;
 }
-@keyframes reveal{
- from{opacity:0;transform:scale(.7) translateY(30px)}
- to{opacity:1;transform:scale(1) translateY(0)}
+
+@keyframes videoReveal{
+
+ 0%{
+  opacity:0;
+  transform:scale(.3) translateY(100px);
+  filter:blur(15px);
+ }
+
+ 60%{
+  opacity:1;
+  transform:scale(1.08) translateY(-10px);
+  filter:blur(0);
+ }
+
+ 100%{
+  opacity:1;
+  transform:scale(1) translateY(0);
+ }
 }
+
+.fadeText{
+ animation:fadeText 2s ease both;
+}
+
+@keyframes fadeText{
+ from{
+  opacity:0;
+  transform:translateY(30px);
+ }
+ to{
+  opacity:1;
+  transform:translateY(0);
+ }
+}
+
+.zoomHeart{
+ animation:zoomHeart 2s ease-in-out infinite;
+}
+
+@keyframes zoomHeart{
+ 0%,100%{
+  transform:scale(1);
+ }
+ 50%{
+  transform:scale(1.25);
+ }
+}
+
+/* ================= QR ================= */
 
 #qrbox{
  margin:25px auto;
  padding:18px;
+
  width:max-content;
  max-width:100%;
+
  background:white;
- border-radius:20px
+
+ border-radius:20px;
+
+ box-shadow:0 0 40px rgba(255,255,255,.2);
 }
 
 #qrcode img{
- max-width:100%
+ max-width:100%;
 }
 
 .small{
  font-size:13px;
- color:#cbbac3
-}
-
-.made{
- position:fixed;
- right:14px;
- bottom:10px;
- z-index:50;
- font-size:12px;
- color:#d8bbc8;
- background:rgba(0,0,0,.35);
- padding:6px 10px;
- border-radius:20px
+ color:#cbbac3;
 }
 
 #shareLink{
  word-break:break-all;
  font-size:12px;
  color:#ffb5cf;
- margin:15px
+ margin:15px;
 }
 
+/* ================= MADE ================= */
+
+.made{
+ position:fixed;
+ right:14px;
+ bottom:10px;
+
+ z-index:50;
+
+ font-size:12px;
+ color:#d8bbc8;
+
+ background:rgba(0,0,0,.35);
+
+ padding:6px 10px;
+
+ border-radius:20px;
+}
+
+/* ================= LOADING ================= */
+
+.loadingHeart{
+ font-size:90px;
+ animation:heartbeat .9s infinite;
+}
+
+.loadingDots{
+ font-size:25px;
+ letter-spacing:5px;
+ animation:dots 1s infinite;
+}
+
+@keyframes dots{
+ 0%,100%{opacity:.3}
+ 50%{opacity:1}
+}
+
+/* ================= MOBILE ================= */
+
 @media(max-width:600px){
- .options{grid-template-columns:1fr}
- .box{padding:28px 16px}
- .final-card h1{font-size:42px}
+
+ .options{
+  grid-template-columns:1fr;
+ }
+
+ .box{
+  padding:28px 16px;
+ }
+
+ .final-card{
+  padding:35px 16px;
+ }
+
 }
 </style>
 </head>
@@ -245,116 +421,183 @@ textarea.field{min-height:130px;resize:vertical}
 
 <div id="app">
 
-<div class="made">Made by Sagar ❤️</div>
+<div class="made">
+Made by Sagar ❤️
+</div>
 
-<!-- START -->
+<!-- ================= START ================= -->
+
 <section id="start" class="screen active">
- <div class="box">
-  <div class="logo">WISHCRAFT</div>
-  <div class="bigheart">❤️</div>
 
-  <h1>A Special Wish</h1>
+<div class="box">
 
-  <p>
-   Someone is about to create something beautiful
-   for someone special.
-  </p>
+<div class="logo">
+WISHCRAFT
+</div>
 
-  <button class="btn" onclick="startQuiz()">
-   Create a Wish ✨
-  </button>
- </div>
+<div class="bigheart">
+❤️
+</div>
+
+<h1>
+A Special Wish
+</h1>
+
+<p>
+Create a beautiful personalized surprise
+for someone special. ✨
+</p>
+
+<button class="btn" onclick="startQuiz()">
+Create a Wish ✨
+</button>
+
+</div>
+
 </section>
 
 
-<!-- QUESTIONS -->
+<!-- ================= QUESTIONS ================= -->
+
 <section id="quiz" class="screen">
- <div class="box">
 
-  <div class="progress">
-   <i id="progress"></i>
-  </div>
+<div class="box">
 
-  <div id="questionArea"></div>
+<div class="progress">
+<i id="progress"></i>
+</div>
 
-  <button class="btn" id="nextBtn" onclick="nextQuestion()">
-   Next ❤️
-  </button>
+<div id="questionArea"></div>
 
- </div>
+<button
+class="btn"
+id="nextBtn"
+onclick="nextQuestion()">
+Next ❤️
+</button>
+
+</div>
+
 </section>
 
 
-<!-- GENERATING -->
+<!-- ================= LOADING ================= -->
+
 <section id="loading" class="screen">
- <div class="box">
-  <div class="bigheart">💖</div>
-  <h2>Creating your surprise...</h2>
-  <p id="loadingText">Collecting beautiful memories...</p>
- </div>
+
+<div class="box">
+
+<div class="loadingHeart">
+💖
+</div>
+
+<h2>
+Creating your surprise...
+</h2>
+
+<p id="loadingText">
+Collecting beautiful memories...
+</p>
+
+<div class="loadingDots">
+• • •
+</div>
+
+</div>
+
 </section>
 
 
-<!-- CREATOR RESULT -->
+<!-- ================= QR RESULT ================= -->
+
 <section id="creatorResult" class="screen">
- <div class="box reveal">
 
-  <div class="bigheart">🎉</div>
+<div class="box">
 
-  <h2>Your surprise is ready!</h2>
+<div class="bigheart">
+🎉
+</div>
 
-  <p>
-   Scan this QR code or send it to the person
-   you created this wish for.
-  </p>
+<h2>
+Your surprise is ready!
+</h2>
 
-  <div id="qrbox">
-   <div id="qrcode"></div>
-  </div>
+<p>
+Scan this QR code or send it to
+your special person. ❤️
+</p>
 
-  <div id="shareLink"></div>
+<div id="qrbox">
+<div id="qrcode"></div>
+</div>
 
-  <button class="btn" onclick="shareWhatsApp()">
-   Send on WhatsApp 📲
-  </button>
+<div id="shareLink"></div>
 
-  <button class="btn secondary" onclick="copyLink()">
-   Copy Link 🔗
-  </button>
+<button
+class="btn"
+onclick="shareWhatsApp()">
+Send on WhatsApp 📲
+</button>
 
-  <p class="small">
-   When they scan the QR, their personalized
-   animated surprise will open.
-  </p>
+<button
+class="btn secondary"
+onclick="copyLink()">
+Copy Link 🔗
+</button>
 
- </div>
+<p class="small">
+When they scan this QR code,
+their surprise will open directly.
+</p>
+
+</div>
+
 </section>
 
 
-<!-- FINAL SURPRISE -->
+<!-- ================= RECEIVER SURPRISE ================= -->
+
 <section id="surprise" class="final">
 
- <div class="final-card reveal">
+<div class="final-card videoAnimation">
 
-  <div style="font-size:80px" id="occasionEmoji">❤️</div>
+<div
+id="occasionEmoji"
+class="zoomHeart"
+style="font-size:85px">
+❤️
+</div>
 
-  <h1 id="finalTitle">A Special Wish</h1>
+<h1 id="finalTitle">
+A Special Wish
+</h1>
 
-  <p id="finalIntro"></p>
+<p
+id="finalIntro"
+class="fadeText">
+</p>
 
-  <div class="message" id="finalMessage"></div>
+<div
+id="finalMessage"
+class="final-message fadeText">
+</div>
 
-  <div style="font-size:55px">
-   💖 ✨ 💕 ✨ 💖
-  </div>
+<div style="font-size:55px;margin:20px 0">
+💖 ✨ 💕 ✨ 💖
+</div>
 
-  <p id="finalFrom"></p>
+<p
+id="finalFrom"
+class="fadeText">
+</p>
 
-  <button class="btn" onclick="restart()">
-   Create Another Wish ✨
-  </button>
+<button
+class="btn"
+onclick="restart()">
+Create Another Wish ✨
+</button>
 
- </div>
+</div>
 
 </section>
 
@@ -363,73 +606,85 @@ textarea.field{min-height:130px;resize:vertical}
 
 <script>
 
+/* =====================================================
+   QUESTIONS
+===================================================== */
+
 const questions = [
 
- {
-  key:"from",
-  title:"What's your name? 💕",
-  type:"text",
-  placeholder:"Your name..."
- },
+{
+ key:"from",
+ title:"What's your name? 💕",
+ type:"text",
+ placeholder:"Your name..."
+},
 
- {
-  key:"to",
-  title:"Who is this special wish for? ❤️",
-  type:"text",
-  placeholder:"Their name..."
- },
+{
+ key:"to",
+ title:"Who is this special wish for? ❤️",
+ type:"text",
+ placeholder:"Their name..."
+},
 
- {
-  key:"occasion",
-  title:"What are you celebrating? 🎉",
-  type:"options",
-  options:[
-   ["birthday","🎂 Birthday"],
-   ["wedding","💍 Wedding"],
-   ["haldi","🌼 Haldi"],
-   ["mehndi","🌿 Mehndi"],
-   ["anniversary","💞 Anniversary"],
-   ["love","❤️ Love"],
-   ["friendship","🫶 Friendship"],
-   ["congrats","🎊 Congratulations"]
-  ]
- },
+{
+ key:"occasion",
+ title:"What are you celebrating? 🎉",
+ type:"options",
 
- {
-  key:"nature",
-  title:"How would you describe them? 😊",
-  type:"options",
-  options:[
-   ["cute","🥰 Cute"],
-   ["funny","😂 Funny"],
-   ["caring","🤗 Caring"],
-   ["romantic","😍 Romantic"],
-   ["calm","🌸 Calm"],
-   ["special","✨ Simply Special"]
-  ]
- },
+ options:[
+  ["birthday","🎂 Birthday"],
+  ["wedding","💍 Wedding"],
+  ["haldi","🌼 Haldi"],
+  ["mehndi","🌿 Mehndi"],
+  ["anniversary","💞 Anniversary"],
+  ["love","❤️ Love"],
+  ["friendship","🫶 Friendship"],
+  ["congrats","🎊 Congratulations"]
+ ]
+},
 
- {
-  key:"relationship",
-  title:"What's your bond? 💖",
-  type:"options",
-  options:[
-   ["partner","💑 Partner"],
-   ["friend","🫶 Best Friend"],
-   ["family","👨‍👩‍👧 Family"],
-   ["sibling","👫 Sibling"],
-   ["other","❤️ Someone Special"]
-  ]
- },
+{
+ key:"nature",
+ title:"How would you describe them? 😊",
+ type:"options",
 
- {
-  key:"message",
-  title:"Write something from your heart 💌",
-  type:"textarea",
-  placeholder:"Write your special message..."
- }
+ options:[
+  ["cute","🥰 Cute"],
+  ["funny","😂 Funny"],
+  ["caring","🤗 Caring"],
+  ["romantic","😍 Romantic"],
+  ["calm","🌸 Calm"],
+  ["special","✨ Simply Special"]
+ ]
+},
+
+{
+ key:"relationship",
+ title:"What's your bond? 💖",
+ type:"options",
+
+ options:[
+  ["partner","💑 Partner"],
+  ["friend","🫶 Best Friend"],
+  ["family","👨‍👩‍👧 Family"],
+  ["sibling","👫 Sibling"],
+  ["other","❤️ Someone Special"]
+ ]
+},
+
+{
+ key:"message",
+ title:"Write something from your heart 💌",
+ type:"textarea",
+ placeholder:"Write your special message..."
+}
 
 ];
+
+
+/* =====================================================
+   DATA
+===================================================== */
 
 let current=0;
 
@@ -443,21 +698,32 @@ let answers={
 };
 
 
+/* =====================================================
+   SCREEN
+===================================================== */
+
 function showScreen(id){
 
- document.querySelectorAll(".screen,.final")
+ document
+ .querySelectorAll(".screen,.final")
  .forEach(x=>x.classList.remove("active"));
 
- document.getElementById(id)
+ document
+ .getElementById(id)
  .classList.add("active");
 
  window.scrollTo(0,0);
 }
 
 
+/* =====================================================
+   START
+===================================================== */
+
 function startQuiz(){
 
  current=0;
+
  answers={
   from:"",
   to:"",
@@ -468,22 +734,30 @@ function startQuiz(){
  };
 
  showScreen("quiz");
- renderQuestion();
 
+ renderQuestion();
 }
 
+
+/* =====================================================
+   RENDER QUESTION
+===================================================== */
 
 function renderQuestion(){
 
  const q=questions[current];
 
  document.getElementById("progress")
- .style.width=((current+1)/questions.length*100)+"%";
+ .style.width=
+ ((current+1)/questions.length*100)+"%";
 
- const area=document.getElementById("questionArea");
+ const area=
+ document.getElementById("questionArea");
 
- let html=
- `<h2>${q.title}</h2>`;
+ let html=`<h2>${q.title}</h2>`;
+
+
+ /* TEXT */
 
  if(q.type==="text"){
 
@@ -492,11 +766,13 @@ function renderQuestion(){
    class="field"
    id="answerInput"
    placeholder="${q.placeholder}"
-   value="${answers[q.key]||""}"
-   autocomplete="off"
-  >`;
-
+   value="${escapeHTML(answers[q.key] || "")}"
+   autocomplete="off">
+  `;
  }
+
+
+ /* TEXTAREA */
 
  if(q.type==="textarea"){
 
@@ -504,10 +780,12 @@ function renderQuestion(){
   <textarea
    class="field"
    id="answerInput"
-   placeholder="${q.placeholder}"
-  >${answers[q.key]||""}</textarea>`;
-
+   placeholder="${q.placeholder}">${escapeHTML(answers[q.key] || "")}</textarea>
+  `;
  }
+
+
+ /* OPTIONS */
 
  if(q.type==="options"){
 
@@ -517,46 +795,74 @@ function renderQuestion(){
 
    html+=`
    <button
-    class="option ${answers[q.key]===o[0]?"selected":""}"
-    onclick="choose('${o[0]}')"
-   >
+    type="button"
+    class="option ${answers[q.key]===o[0] ? "selected":""}"
+    onclick="choose('${o[0]}')">
+
     ${o[1]}
-   </button>`;
+
+   </button>
+   `;
 
   });
 
   html+=`</div>`;
-
  }
+
 
  area.innerHTML=html;
 
+
  document.getElementById("nextBtn").innerText=
  current===questions.length-1
- ?"Create My Surprise 💖"
- :"Next ❤️";
+ ? "Create My Surprise 💖"
+ : "Next ❤️";
 
 }
 
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(str){
+
+ return String(str)
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
+}
+
+
+/* =====================================================
+   CHOOSE OPTION
+===================================================== */
 
 function choose(value){
 
  answers[questions[current].key]=value;
 
  renderQuestion();
-
 }
 
+
+/* =====================================================
+   NEXT
+===================================================== */
 
 function nextQuestion(){
 
  const q=questions[current];
 
+
  if(q.type==="text" || q.type==="textarea"){
 
-  const value=document
-   .getElementById("answerInput")
-   .value.trim();
+  const input=
+  document.getElementById("answerInput");
+
+  const value=input.value.trim();
 
   if(!value){
 
@@ -566,8 +872,8 @@ function nextQuestion(){
   }
 
   answers[q.key]=value;
-
  }
+
 
  if(q.type==="options" && !answers[q.key]){
 
@@ -576,30 +882,44 @@ function nextQuestion(){
 
  }
 
+
  if(current<questions.length-1){
 
   current++;
+
   renderQuestion();
 
- }else{
+ }
+ else{
 
   createSurprise();
 
  }
-
 }
 
+
+/* =====================================================
+   CREATE SURPRISE
+===================================================== */
 
 function createSurprise(){
 
  showScreen("loading");
 
  const messages=[
-  "Turning your words into something beautiful...",
-  "Adding a little magic ✨",
-  "Creating hearts and memories ❤️",
-  "Almost ready...",
+
+  "Turning your words into something beautiful... ✨",
+
+  "Adding a little magic... 💫",
+
+  "Creating hearts and memories... ❤️",
+
+  "Preparing your personalized surprise... 💕",
+
+  "Almost ready... 🎁",
+
   "Your surprise is ready! 💖"
+
  ];
 
  let i=0;
@@ -618,16 +938,21 @@ function createSurprise(){
    setTimeout(()=>{
 
     createShareURL();
+
     showScreen("creatorResult");
 
    },700);
 
   }
 
- },650);
+ },600);
 
 }
 
+
+/* =====================================================
+   OCCASION DATA
+===================================================== */
 
 function getOccasionInfo(){
 
@@ -648,7 +973,7 @@ function getOccasionInfo(){
   haldi:{
    emoji:"🌼",
    title:"Happy Haldi",
-   intro:"Let the celebrations, colours and happiness begin! 🌼"
+   intro:"Let the colours, happiness and celebrations begin! 🌼"
   },
 
   mehndi:{
@@ -684,36 +1009,55 @@ function getOccasionInfo(){
  };
 
  return map[answers.occasion] || map.love;
-
 }
 
 
+/* =====================================================
+   ENCODE ANSWERS
+===================================================== */
+
 function encodeData(){
 
+ const json=JSON.stringify(answers);
+
  return btoa(
-  unescape(
-   encodeURIComponent(
-    JSON.stringify(answers)
-   )
-  )
+  encodeURIComponent(json)
+  .replace(/%([0-9A-F]{2})/g,
+  function(match,p1){
+   return String.fromCharCode(
+    parseInt(p1,16)
+   );
+  })
  );
 
 }
 
 
+/* =====================================================
+   DECODE ANSWERS
+===================================================== */
+
 function decodeData(value){
 
  try{
 
-  return JSON.parse(
+  const decoded=
    decodeURIComponent(
-    escape(
-     atob(value)
-    )
-   )
-  );
+    Array.prototype.map.call(
+     atob(value),
+     function(c){
+      return "%"+
+      ("00"+c.charCodeAt(0).toString(16)).slice(-2);
+     }
+    ).join("")
+   );
 
- }catch(e){
+  return JSON.parse(decoded);
+
+ }
+ catch(e){
+
+  console.error("Invalid wish data",e);
 
   return null;
 
@@ -722,19 +1066,34 @@ function decodeData(value){
 }
 
 
+/* =====================================================
+   CREATE SHARE URL
+===================================================== */
+
 function createShareURL(){
 
  const encoded=encodeData();
 
+ /*
+    IMPORTANT:
+    QR points to THIS SAME WEBSITE,
+    but with ?wish=YOUR-DATA
+ */
+
  const url=
-  location.origin+
-  location.pathname+
-  "?wish="+encoded;
+ location.origin+
+ location.pathname+
+ "?wish="+
+ encodeURIComponent(encoded);
+
 
  document.getElementById("shareLink")
  .innerText=url;
 
- document.getElementById("qrcode").innerHTML="";
+
+ document.getElementById("qrcode")
+ .innerHTML="";
+
 
  new QRCode(
   document.getElementById("qrcode"),
@@ -749,81 +1108,161 @@ function createShareURL(){
 }
 
 
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
 function shareWhatsApp(){
 
- const url=document
-  .getElementById("shareLink")
-  .innerText;
+ const url=
+ document.getElementById("shareLink")
+ .innerText;
 
  const text=
-  "I made a special surprise for you ❤️ Scan/open this: "+url;
+ `I made a special surprise for you ❤️
+
+Open this and see your surprise:
+
+${url}
+
+✨ WishCraft ❤️`;
+
 
  window.open(
-  "https://wa.me/?text="+encodeURIComponent(text),
+  "https://wa.me/?text="+
+  encodeURIComponent(text),
   "_blank"
  );
 
 }
 
 
+/* =====================================================
+   COPY
+===================================================== */
+
 function copyLink(){
 
- const url=document
-  .getElementById("shareLink")
-  .innerText;
+ const url=
+ document.getElementById("shareLink")
+ .innerText;
 
- navigator.clipboard.writeText(url)
- .then(()=>alert("Link copied! ❤️"));
+ if(navigator.clipboard){
+
+  navigator.clipboard.writeText(url)
+  .then(()=>{
+   alert("Link copied! ❤️");
+  });
+
+ }
+ else{
+
+  alert("Please copy the link manually ❤️");
+
+ }
 
 }
 
 
+/* =====================================================
+   SHOW RECEIVER SURPRISE
+===================================================== */
+
 function showSurprise(data){
+
+ if(!data) return;
 
  answers=data;
 
  const info=getOccasionInfo();
 
+
+ /* OCCASION */
+
  document.getElementById("occasionEmoji")
  .innerText=info.emoji;
 
+
+ /* TITLE */
+
  document.getElementById("finalTitle")
  .innerText=
-  info.title+
-  (answers.to ? ", "+answers.to+"!" : "!");
+ info.title+
+ (answers.to ? ", "+answers.to+"!" : "!");
+
+
+ /* INTRO */
 
  document.getElementById("finalIntro")
  .innerText=info.intro;
 
+
+ /* MESSAGE */
+
  document.getElementById("finalMessage")
- .innerText=answers.message;
+ .innerText=
+ answers.message || "You are very special to me. ❤️";
+
+
+ /* FROM */
 
  document.getElementById("finalFrom")
  .innerText=
-  answers.from
-  ? "With love, "+answers.from+" ❤️"
-  : "Made especially for you ❤️";
+ answers.from
+ ? "With love, "+answers.from+" ❤️"
+ : "Made especially for you ❤️";
+
+
+ /* SHOW ONLY SURPRISE */
 
  showScreen("surprise");
+
+
+ /* START ANIMATION */
 
  startHearts();
 
 }
 
 
+/* =====================================================
+   CHECK QR LINK
+===================================================== */
+
 function checkForWish(){
 
- const params=new URLSearchParams(location.search);
+ const params=
+ new URLSearchParams(
+  window.location.search
+ );
 
- const data=params.get("wish");
+ const data=
+ params.get("wish");
+
+
+ /*
+   THIS IS THE MOST IMPORTANT PART.
+
+   If ?wish exists,
+   DON'T SHOW START PAGE.
+   DON'T SHOW QUESTIONS.
+
+   DIRECTLY SHOW THE PERSONALIZED SURPRISE.
+ */
 
  if(data){
 
-  const decoded=decodeData(data);
+  const decoded=
+  decodeData(data);
 
   if(decoded){
 
    showSurprise(decoded);
+
+  }
+  else{
+
+   showScreen("start");
 
   }
 
@@ -832,57 +1271,1435 @@ function checkForWish(){
 }
 
 
+/* =====================================================
+   RESTART
+===================================================== */
+
 function restart(){
 
- history.replaceState(
-  {},
-  document.title,
-  location.pathname
- );
-
- location.reload();
+ window.location.href=
+ window.location.origin+
+ window.location.pathname;
 
 }
 
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+let heartInterval=null;
 
 function startHearts(){
 
- setInterval(()=>{
+ if(heartInterval) return;
 
-  const heart=document.createElement("div");
+ heartInterval=setInterval(()=>{
+
+  const heart=
+  document.createElement("div");
 
   heart.className="particle";
 
-  const symbols=["❤️","💖","💕","💗","✨","🌸"];
+  const symbols=[
+   "❤️",
+   "💖",
+   "💕",
+   "💗",
+   "✨",
+   "🌸",
+   "💞",
+   "💓"
+  ];
 
   heart.innerText=
-   symbols[Math.floor(Math.random()*symbols.length)];
+  symbols[
+   Math.floor(
+    Math.random()*symbols.length
+   )
+  ];
 
   heart.style.left=
-   Math.random()*100+"vw";
+  Math.random()*100+"vw";
 
   heart.style.fontSize=
-   (15+Math.random()*30)+"px";
+  (15+Math.random()*30)+"px";
 
   heart.style.animationDuration=
-   (5+Math.random()*5)+"s";
+  (5+Math.random()*5)+"s";
 
   document.body.appendChild(heart);
 
-  setTimeout(
-   ()=>heart.remove(),
-   10000
-  );
+  setTimeout(()=>{
+   heart.remove();
+  },11000);
 
- },400);
+ },350);
 
 }
 
 
+/* =====================================================
+   START
+===================================================== */
+
 startHearts();
+
 checkForWish();
 
 </script>
 
 </body>
-  </html>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>WishCraft ❤️</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+*{box-sizing:border-box}
+
+html{
+ scroll-behavior:smooth;
+}
+
+body{
+ margin:0;
+ font-family:Georgia,serif;
+ background:#08030a;
+ color:white;
+ overflow-x:hidden;
+}
+
+button,input,textarea{
+ font:inherit;
+}
+
+button{
+ cursor:pointer;
+}
+
+#app{
+ min-height:100vh;
+ position:relative;
+ overflow:hidden;
+
+ background:
+ radial-gradient(circle at 20% 20%,#5c0b32 0,transparent 30%),
+ radial-gradient(circle at 80% 80%,#32105d 0,transparent 30%),
+ linear-gradient(135deg,#09030c,#210718,#09030c);
+}
+
+/* ================= PARTICLES ================= */
+
+.particle{
+ position:fixed;
+ bottom:-50px;
+ pointer-events:none;
+ animation:floatUp linear forwards;
+ z-index:10;
+}
+
+@keyframes floatUp{
+ 0%{
+  transform:translateY(0) rotate(0) scale(.5);
+  opacity:0;
+ }
+ 15%{
+  opacity:1;
+ }
+ 100%{
+  transform:translateY(-115vh) rotate(360deg) scale(1.2);
+  opacity:0;
+ }
+}
+
+/* ================= SCREENS ================= */
+
+.screen{
+ min-height:100vh;
+ display:none;
+ align-items:center;
+ justify-content:center;
+ padding:30px 18px;
+ position:relative;
+ z-index:2;
+}
+
+.screen.active{
+ display:flex;
+}
+
+.box{
+ width:min(700px,100%);
+ text-align:center;
+ padding:35px 22px;
+
+ border:1px solid rgba(255,255,255,.16);
+ border-radius:30px;
+
+ background:rgba(255,255,255,.07);
+ backdrop-filter:blur(18px);
+
+ box-shadow:0 20px 80px rgba(0,0,0,.45);
+}
+
+.logo{
+ font-size:20px;
+ color:#ff9fc5;
+ letter-spacing:3px;
+ margin-bottom:25px;
+}
+
+.bigheart{
+ font-size:95px;
+ animation:heartbeat 1.3s infinite;
+ filter:drop-shadow(0 0 25px #ff397d);
+}
+
+@keyframes heartbeat{
+ 0%,100%{transform:scale(1)}
+ 50%{transform:scale(1.18)}
+}
+
+h1{
+ font-size:clamp(38px,8vw,75px);
+ margin:12px 0;
+
+ background:linear-gradient(90deg,#fff,#ff91ba,#fff);
+ -webkit-background-clip:text;
+ background-clip:text;
+ color:transparent;
+}
+
+h2{
+ font-size:34px;
+ margin:8px 0 25px;
+}
+
+p{
+ color:#eadde4;
+ font-size:17px;
+ line-height:1.6;
+}
+
+.btn{
+ border:0;
+ border-radius:50px;
+ padding:14px 25px;
+ margin:8px;
+
+ font-weight:bold;
+ color:white;
+
+ background:linear-gradient(135deg,#ff397d,#a51cff);
+
+ box-shadow:0 10px 30px rgba(255,40,120,.3);
+
+ transition:.2s;
+}
+
+.btn:hover{
+ transform:translateY(-3px) scale(1.02);
+}
+
+.btn.secondary{
+ background:rgba(255,255,255,.1);
+ border:1px solid rgba(255,255,255,.2);
+}
+
+/* ================= FORM ================= */
+
+.progress{
+ width:100%;
+ height:7px;
+
+ background:rgba(255,255,255,.1);
+ border-radius:10px;
+ overflow:hidden;
+ margin-bottom:25px;
+}
+
+.progress i{
+ display:block;
+ height:100%;
+ width:0;
+
+ background:linear-gradient(90deg,#ff397d,#ffb3d0);
+
+ transition:.4s;
+}
+
+.field{
+ width:100%;
+ padding:16px;
+ margin:8px 0 18px;
+
+ border-radius:16px;
+ border:1px solid rgba(255,255,255,.2);
+
+ background:rgba(0,0,0,.25);
+ color:white;
+
+ outline:none;
+}
+
+textarea.field{
+ min-height:130px;
+ resize:vertical;
+}
+
+.options{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:12px;
+}
+
+.option{
+ padding:17px;
+
+ border-radius:18px;
+ border:1px solid rgba(255,255,255,.16);
+
+ background:rgba(255,255,255,.07);
+
+ color:white;
+
+ transition:.2s;
+}
+
+.option:hover,
+.option.selected{
+ background:linear-gradient(135deg,#ff397d55,#a51cff55);
+ border-color:#ff79a9;
+ transform:scale(1.02);
+}
+
+/* ================= FINAL SURPRISE ================= */
+
+.final{
+ min-height:100vh;
+ padding:40px 18px 100px;
+ text-align:center;
+ position:relative;
+}
+
+.final-card{
+ max-width:760px;
+ margin:auto;
+ padding:40px 20px;
+
+ border-radius:35px;
+
+ background:
+ radial-gradient(circle at top,#7d1649,#270b2e 45%,#10040f);
+
+ border:1px solid #ff86b5;
+
+ box-shadow:
+ 0 0 80px rgba(255,35,120,.25);
+
+ overflow:hidden;
+}
+
+.final-card h1{
+ font-size:clamp(40px,8vw,65px);
+}
+
+.final-message{
+ margin:25px auto;
+ max-width:600px;
+
+ padding:28px;
+
+ border-radius:25px;
+
+ background:rgba(255,255,255,.08);
+
+ font-size:21px;
+ line-height:1.8;
+
+ white-space:pre-wrap;
+}
+
+/* ================= VIDEO-LIKE ANIMATION ================= */
+
+.videoAnimation{
+ animation:videoReveal 1.8s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes videoReveal{
+
+ 0%{
+  opacity:0;
+  transform:scale(.3) translateY(100px);
+  filter:blur(15px);
+ }
+
+ 60%{
+  opacity:1;
+  transform:scale(1.08) translateY(-10px);
+  filter:blur(0);
+ }
+
+ 100%{
+  opacity:1;
+  transform:scale(1) translateY(0);
+ }
+}
+
+.fadeText{
+ animation:fadeText 2s ease both;
+}
+
+@keyframes fadeText{
+ from{
+  opacity:0;
+  transform:translateY(30px);
+ }
+ to{
+  opacity:1;
+  transform:translateY(0);
+ }
+}
+
+.zoomHeart{
+ animation:zoomHeart 2s ease-in-out infinite;
+}
+
+@keyframes zoomHeart{
+ 0%,100%{
+  transform:scale(1);
+ }
+ 50%{
+  transform:scale(1.25);
+ }
+}
+
+/* ================= QR ================= */
+
+#qrbox{
+ margin:25px auto;
+ padding:18px;
+
+ width:max-content;
+ max-width:100%;
+
+ background:white;
+
+ border-radius:20px;
+
+ box-shadow:0 0 40px rgba(255,255,255,.2);
+}
+
+#qrcode img{
+ max-width:100%;
+}
+
+.small{
+ font-size:13px;
+ color:#cbbac3;
+}
+
+#shareLink{
+ word-break:break-all;
+ font-size:12px;
+ color:#ffb5cf;
+ margin:15px;
+}
+
+/* ================= MADE ================= */
+
+.made{
+ position:fixed;
+ right:14px;
+ bottom:10px;
+
+ z-index:50;
+
+ font-size:12px;
+ color:#d8bbc8;
+
+ background:rgba(0,0,0,.35);
+
+ padding:6px 10px;
+
+ border-radius:20px;
+}
+
+/* ================= LOADING ================= */
+
+.loadingHeart{
+ font-size:90px;
+ animation:heartbeat .9s infinite;
+}
+
+.loadingDots{
+ font-size:25px;
+ letter-spacing:5px;
+ animation:dots 1s infinite;
+}
+
+@keyframes dots{
+ 0%,100%{opacity:.3}
+ 50%{opacity:1}
+}
+
+/* ================= MOBILE ================= */
+
+@media(max-width:600px){
+
+ .options{
+  grid-template-columns:1fr;
+ }
+
+ .box{
+  padding:28px 16px;
+ }
+
+ .final-card{
+  padding:35px 16px;
+ }
+
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+
+<div class="made">
+Made by Sagar ❤️
+</div>
+
+<!-- ================= START ================= -->
+
+<section id="start" class="screen active">
+
+<div class="box">
+
+<div class="logo">
+WISHCRAFT
+</div>
+
+<div class="bigheart">
+❤️
+</div>
+
+<h1>
+A Special Wish
+</h1>
+
+<p>
+Create a beautiful personalized surprise
+for someone special. ✨
+</p>
+
+<button class="btn" onclick="startQuiz()">
+Create a Wish ✨
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= QUESTIONS ================= -->
+
+<section id="quiz" class="screen">
+
+<div class="box">
+
+<div class="progress">
+<i id="progress"></i>
+</div>
+
+<div id="questionArea"></div>
+
+<button
+class="btn"
+id="nextBtn"
+onclick="nextQuestion()">
+Next ❤️
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ================= LOADING ================= -->
+
+<section id="loading" class="screen">
+
+<div class="box">
+
+<div class="loadingHeart">
+💖
+</div>
+
+<h2>
+Creating your surprise...
+</h2>
+
+<p id="loadingText">
+Collecting beautiful memories...
+</p>
+
+<div class="loadingDots">
+• • •
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ================= QR RESULT ================= -->
+
+<section id="creatorResult" class="screen">
+
+<div class="box">
+
+<div class="bigheart">
+🎉
+</div>
+
+<h2>
+Your surprise is ready!
+</h2>
+
+<p>
+Scan this QR code or send it to
+your special person. ❤️
+</p>
+
+<div id="qrbox">
+<div id="qrcode"></div>
+</div>
+
+<div id="shareLink"></div>
+
+<button
+class="btn"
+onclick="shareWhatsApp()">
+Send on WhatsApp 📲
+</button>
+
+<button
+class="btn secondary"
+onclick="copyLink()">
+Copy Link 🔗
+</button>
+
+<p class="small">
+When they scan this QR code,
+their surprise will open directly.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- ================= RECEIVER SURPRISE ================= -->
+
+<section id="surprise" class="final">
+
+<div class="final-card videoAnimation">
+
+<div
+id="occasionEmoji"
+class="zoomHeart"
+style="font-size:85px">
+❤️
+</div>
+
+<h1 id="finalTitle">
+A Special Wish
+</h1>
+
+<p
+id="finalIntro"
+class="fadeText">
+</p>
+
+<div
+id="finalMessage"
+class="final-message fadeText">
+</div>
+
+<div style="font-size:55px;margin:20px 0">
+💖 ✨ 💕 ✨ 💖
+</div>
+
+<p
+id="finalFrom"
+class="fadeText">
+</p>
+
+<button
+class="btn"
+onclick="restart()">
+Create Another Wish ✨
+</button>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   QUESTIONS
+===================================================== */
+
+const questions = [
+
+{
+ key:"from",
+ title:"What's your name? 💕",
+ type:"text",
+ placeholder:"Your name..."
+},
+
+{
+ key:"to",
+ title:"Who is this special wish for? ❤️",
+ type:"text",
+ placeholder:"Their name..."
+},
+
+{
+ key:"occasion",
+ title:"What are you celebrating? 🎉",
+ type:"options",
+
+ options:[
+  ["birthday","🎂 Birthday"],
+  ["wedding","💍 Wedding"],
+  ["haldi","🌼 Haldi"],
+  ["mehndi","🌿 Mehndi"],
+  ["anniversary","💞 Anniversary"],
+  ["love","❤️ Love"],
+  ["friendship","🫶 Friendship"],
+  ["congrats","🎊 Congratulations"]
+ ]
+},
+
+{
+ key:"nature",
+ title:"How would you describe them? 😊",
+ type:"options",
+
+ options:[
+  ["cute","🥰 Cute"],
+  ["funny","😂 Funny"],
+  ["caring","🤗 Caring"],
+  ["romantic","😍 Romantic"],
+  ["calm","🌸 Calm"],
+  ["special","✨ Simply Special"]
+ ]
+},
+
+{
+ key:"relationship",
+ title:"What's your bond? 💖",
+ type:"options",
+
+ options:[
+  ["partner","💑 Partner"],
+  ["friend","🫶 Best Friend"],
+  ["family","👨‍👩‍👧 Family"],
+  ["sibling","👫 Sibling"],
+  ["other","❤️ Someone Special"]
+ ]
+},
+
+{
+ key:"message",
+ title:"Write something from your heart 💌",
+ type:"textarea",
+ placeholder:"Write your special message..."
+}
+
+];
+
+
+/* =====================================================
+   DATA
+===================================================== */
+
+let current=0;
+
+let answers={
+ from:"",
+ to:"",
+ occasion:"",
+ nature:"",
+ relationship:"",
+ message:""
+};
+
+
+/* =====================================================
+   SCREEN
+===================================================== */
+
+function showScreen(id){
+
+ document
+ .querySelectorAll(".screen,.final")
+ .forEach(x=>x.classList.remove("active"));
+
+ document
+ .getElementById(id)
+ .classList.add("active");
+
+ window.scrollTo(0,0);
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+function startQuiz(){
+
+ current=0;
+
+ answers={
+  from:"",
+  to:"",
+  occasion:"",
+  nature:"",
+  relationship:"",
+  message:""
+ };
+
+ showScreen("quiz");
+
+ renderQuestion();
+}
+
+
+/* =====================================================
+   RENDER QUESTION
+===================================================== */
+
+function renderQuestion(){
+
+ const q=questions[current];
+
+ document.getElementById("progress")
+ .style.width=
+ ((current+1)/questions.length*100)+"%";
+
+ const area=
+ document.getElementById("questionArea");
+
+ let html=`<h2>${q.title}</h2>`;
+
+
+ /* TEXT */
+
+ if(q.type==="text"){
+
+  html+=`
+  <input
+   class="field"
+   id="answerInput"
+   placeholder="${q.placeholder}"
+   value="${escapeHTML(answers[q.key] || "")}"
+   autocomplete="off">
+  `;
+ }
+
+
+ /* TEXTAREA */
+
+ if(q.type==="textarea"){
+
+  html+=`
+  <textarea
+   class="field"
+   id="answerInput"
+   placeholder="${q.placeholder}">${escapeHTML(answers[q.key] || "")}</textarea>
+  `;
+ }
+
+
+ /* OPTIONS */
+
+ if(q.type==="options"){
+
+  html+=`<div class="options">`;
+
+  q.options.forEach(o=>{
+
+   html+=`
+   <button
+    type="button"
+    class="option ${answers[q.key]===o[0] ? "selected":""}"
+    onclick="choose('${o[0]}')">
+
+    ${o[1]}
+
+   </button>
+   `;
+
+  });
+
+  html+=`</div>`;
+ }
+
+
+ area.innerHTML=html;
+
+
+ document.getElementById("nextBtn").innerText=
+ current===questions.length-1
+ ? "Create My Surprise 💖"
+ : "Next ❤️";
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(str){
+
+ return String(str)
+ .replace(/&/g,"&amp;")
+ .replace(/</g,"&lt;")
+ .replace(/>/g,"&gt;")
+ .replace(/"/g,"&quot;")
+ .replace(/'/g,"&#039;");
+}
+
+
+/* =====================================================
+   CHOOSE OPTION
+===================================================== */
+
+function choose(value){
+
+ answers[questions[current].key]=value;
+
+ renderQuestion();
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
+
+function nextQuestion(){
+
+ const q=questions[current];
+
+
+ if(q.type==="text" || q.type==="textarea"){
+
+  const input=
+  document.getElementById("answerInput");
+
+  const value=input.value.trim();
+
+  if(!value){
+
+   alert("Please fill this first ❤️");
+   return;
+
+  }
+
+  answers[q.key]=value;
+ }
+
+
+ if(q.type==="options" && !answers[q.key]){
+
+  alert("Please choose one ❤️");
+  return;
+
+ }
+
+
+ if(current<questions.length-1){
+
+  current++;
+
+  renderQuestion();
+
+ }
+ else{
+
+  createSurprise();
+
+ }
+}
+
+
+/* =====================================================
+   CREATE SURPRISE
+===================================================== */
+
+function createSurprise(){
+
+ showScreen("loading");
+
+ const messages=[
+
+  "Turning your words into something beautiful... ✨",
+
+  "Adding a little magic... 💫",
+
+  "Creating hearts and memories... ❤️",
+
+  "Preparing your personalized surprise... 💕",
+
+  "Almost ready... 🎁",
+
+  "Your surprise is ready! 💖"
+
+ ];
+
+ let i=0;
+
+ const timer=setInterval(()=>{
+
+  document.getElementById("loadingText")
+  .innerText=messages[i];
+
+  i++;
+
+  if(i>=messages.length){
+
+   clearInterval(timer);
+
+   setTimeout(()=>{
+
+    createShareURL();
+
+    showScreen("creatorResult");
+
+   },700);
+
+  }
+
+ },600);
+
+}
+
+
+/* =====================================================
+   OCCASION DATA
+===================================================== */
+
+function getOccasionInfo(){
+
+ const map={
+
+  birthday:{
+   emoji:"🎂",
+   title:"Happy Birthday",
+   intro:"Today is all about celebrating you! ✨"
+  },
+
+  wedding:{
+   emoji:"💍",
+   title:"A Beautiful Wedding Wish",
+   intro:"Two hearts, one beautiful journey. ❤️"
+  },
+
+  haldi:{
+   emoji:"🌼",
+   title:"Happy Haldi",
+   intro:"Let the colours, happiness and celebrations begin! 🌼"
+  },
+
+  mehndi:{
+   emoji:"🌿",
+   title:"Happy Mehndi",
+   intro:"A beautiful celebration filled with love and memories. 💚"
+  },
+
+  anniversary:{
+   emoji:"💞",
+   title:"Happy Anniversary",
+   intro:"Celebrating a beautiful bond and all the memories. ❤️"
+  },
+
+  love:{
+   emoji:"❤️",
+   title:"A Message From The Heart",
+   intro:"Some feelings deserve to be written forever. 💕"
+  },
+
+  friendship:{
+   emoji:"🫶",
+   title:"For A Very Special Friend",
+   intro:"Some friendships make life more beautiful. ✨"
+  },
+
+  congrats:{
+   emoji:"🎊",
+   title:"Congratulations!",
+   intro:"Today is your moment to celebrate. 🎉"
+  }
+
+ };
+
+ return map[answers.occasion] || map.love;
+}
+
+
+/* =====================================================
+   ENCODE ANSWERS
+===================================================== */
+
+function encodeData(){
+
+ const json=JSON.stringify(answers);
+
+ return btoa(
+  encodeURIComponent(json)
+  .replace(/%([0-9A-F]{2})/g,
+  function(match,p1){
+   return String.fromCharCode(
+    parseInt(p1,16)
+   );
+  })
+ );
+
+}
+
+
+/* =====================================================
+   DECODE ANSWERS
+===================================================== */
+
+function decodeData(value){
+
+ try{
+
+  const decoded=
+   decodeURIComponent(
+    Array.prototype.map.call(
+     atob(value),
+     function(c){
+      return "%"+
+      ("00"+c.charCodeAt(0).toString(16)).slice(-2);
+     }
+    ).join("")
+   );
+
+  return JSON.parse(decoded);
+
+ }
+ catch(e){
+
+  console.error("Invalid wish data",e);
+
+  return null;
+
+ }
+
+}
+
+
+/* =====================================================
+   CREATE SHARE URL
+===================================================== */
+
+function createShareURL(){
+
+ const encoded=encodeData();
+
+ /*
+    IMPORTANT:
+    QR points to THIS SAME WEBSITE,
+    but with ?wish=YOUR-DATA
+ */
+
+ const url=
+ location.origin+
+ location.pathname+
+ "?wish="+
+ encodeURIComponent(encoded);
+
+
+ document.getElementById("shareLink")
+ .innerText=url;
+
+
+ document.getElementById("qrcode")
+ .innerHTML="";
+
+
+ new QRCode(
+  document.getElementById("qrcode"),
+  {
+   text:url,
+   width:230,
+   height:230,
+   correctLevel:QRCode.CorrectLevel.H
+  }
+ );
+
+}
+
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+function shareWhatsApp(){
+
+ const url=
+ document.getElementById("shareLink")
+ .innerText;
+
+ const text=
+ `I made a special surprise for you ❤️
+
+Open this and see your surprise:
+
+${url}
+
+✨ WishCraft ❤️`;
+
+
+ window.open(
+  "https://wa.me/?text="+
+  encodeURIComponent(text),
+  "_blank"
+ );
+
+}
+
+
+/* =====================================================
+   COPY
+===================================================== */
+
+function copyLink(){
+
+ const url=
+ document.getElementById("shareLink")
+ .innerText;
+
+ if(navigator.clipboard){
+
+  navigator.clipboard.writeText(url)
+  .then(()=>{
+   alert("Link copied! ❤️");
+  });
+
+ }
+ else{
+
+  alert("Please copy the link manually ❤️");
+
+ }
+
+}
+
+
+/* =====================================================
+   SHOW RECEIVER SURPRISE
+===================================================== */
+
+function showSurprise(data){
+
+ if(!data) return;
+
+ answers=data;
+
+ const info=getOccasionInfo();
+
+
+ /* OCCASION */
+
+ document.getElementById("occasionEmoji")
+ .innerText=info.emoji;
+
+
+ /* TITLE */
+
+ document.getElementById("finalTitle")
+ .innerText=
+ info.title+
+ (answers.to ? ", "+answers.to+"!" : "!");
+
+
+ /* INTRO */
+
+ document.getElementById("finalIntro")
+ .innerText=info.intro;
+
+
+ /* MESSAGE */
+
+ document.getElementById("finalMessage")
+ .innerText=
+ answers.message || "You are very special to me. ❤️";
+
+
+ /* FROM */
+
+ document.getElementById("finalFrom")
+ .innerText=
+ answers.from
+ ? "With love, "+answers.from+" ❤️"
+ : "Made especially for you ❤️";
+
+
+ /* SHOW ONLY SURPRISE */
+
+ showScreen("surprise");
+
+
+ /* START ANIMATION */
+
+ startHearts();
+
+}
+
+
+/* =====================================================
+   CHECK QR LINK
+===================================================== */
+
+function checkForWish(){
+
+ const params=
+ new URLSearchParams(
+  window.location.search
+ );
+
+ const data=
+ params.get("wish");
+
+
+ /*
+   THIS IS THE MOST IMPORTANT PART.
+
+   If ?wish exists,
+   DON'T SHOW START PAGE.
+   DON'T SHOW QUESTIONS.
+
+   DIRECTLY SHOW THE PERSONALIZED SURPRISE.
+ */
+
+ if(data){
+
+  const decoded=
+  decodeData(data);
+
+  if(decoded){
+
+   showSurprise(decoded);
+
+  }
+  else{
+
+   showScreen("start");
+
+  }
+
+ }
+
+}
+
+
+/* =====================================================
+   RESTART
+===================================================== */
+
+function restart(){
+
+ window.location.href=
+ window.location.origin+
+ window.location.pathname;
+
+}
+
+
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+let heartInterval=null;
+
+function startHearts(){
+
+ if(heartInterval) return;
+
+ heartInterval=setInterval(()=>{
+
+  const heart=
+  document.createElement("div");
+
+  heart.className="particle";
+
+  const symbols=[
+   "❤️",
+   "💖",
+   "💕",
+   "💗",
+   "✨",
+   "🌸",
+   "💞",
+   "💓"
+  ];
+
+  heart.innerText=
+  symbols[
+   Math.floor(
+    Math.random()*symbols.length
+   )
+  ];
+
+  heart.style.left=
+  Math.random()*100+"vw";
+
+  heart.style.fontSize=
+  (15+Math.random()*30)+"px";
+
+  heart.style.animationDuration=
+  (5+Math.random()*5)+"s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(()=>{
+   heart.remove();
+  },11000);
+
+ },350);
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+startHearts();
+
+checkForWish();
+
+</script>
+
+</body>
+</html>
