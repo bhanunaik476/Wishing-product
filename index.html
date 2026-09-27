@@ -12,156 +12,132 @@
 
 html,body{
  margin:0;
- width:100%;
  min-height:100%;
  font-family:Georgia,serif;
  background:#050505;
- color:white;
- overflow-x:hidden;
+ color:#fff;
 }
 
-button,input,textarea,select{
- font:inherit;
-}
+body{overflow-x:hidden}
+
+button,input,textarea{font:inherit}
 
 .screen{
  min-height:100vh;
  display:none;
  align-items:center;
  justify-content:center;
- padding:25px;
+ padding:22px;
 }
 
-.screen.active{
- display:flex;
-}
+.screen.active{display:flex}
 
 .box{
- width:min(500px,94vw);
- padding:30px 24px;
+ width:min(510px,94vw);
+ padding:30px 23px;
  border-radius:28px;
  background:rgba(255,255,255,.07);
  border:1px solid rgba(255,255,255,.13);
- box-shadow:0 20px 70px rgba(0,0,0,.6);
+ box-shadow:0 20px 70px rgba(0,0,0,.65);
  backdrop-filter:blur(18px);
-}
-
-h1,h2{
- margin-top:0;
- text-align:center;
 }
 
 .logo{
  text-align:center;
- font-size:45px;
- margin-bottom:10px;
+ font-size:52px;
+ margin-bottom:5px;
 }
+
+h1,h2{text-align:center;margin-top:5px}
 
 .subtitle{
  text-align:center;
  color:#bbb;
- line-height:1.6;
-}
-
-input,textarea,select{
- width:100%;
- padding:15px;
- margin:8px 0 15px;
- border:none;
- outline:none;
- border-radius:15px;
- background:rgba(255,255,255,.1);
- color:white;
- border:1px solid rgba(255,255,255,.12);
-}
-
-textarea{
- min-height:150px;
- resize:vertical;
-}
-
-select option{
- background:#111;
- color:white;
-}
-
-label{
- display:block;
- margin-top:10px;
- color:#ddd;
- font-size:14px;
+ line-height:1.7;
 }
 
 .mainBtn{
  width:100%;
  padding:15px;
+ margin-top:12px;
  border:0;
  border-radius:16px;
+ color:#fff;
  cursor:pointer;
- background:linear-gradient(135deg,#ff3d81,#9b3dff);
- color:white;
- font-weight:bold;
- margin-top:10px;
- box-shadow:0 10px 30px rgba(255,40,120,.25);
+ background:linear-gradient(135deg,#ff3d81,#8d45ff);
+ box-shadow:0 10px 30px rgba(255,50,130,.25);
 }
 
 .secondaryBtn{
  width:100%;
- padding:13px;
- border-radius:15px;
- border:1px solid rgba(255,255,255,.2);
- background:rgba(255,255,255,.08);
- color:white;
- cursor:pointer;
+ padding:14px;
  margin-top:10px;
+ border-radius:16px;
+ border:1px solid rgba(255,255,255,.2);
+ background:rgba(255,255,255,.07);
+ color:#fff;
+ cursor:pointer;
 }
 
 .progress{
  height:5px;
  background:#222;
  border-radius:20px;
- margin-bottom:25px;
  overflow:hidden;
+ margin-bottom:25px;
 }
 
 .progressBar{
- height:100%;
  width:0;
- background:linear-gradient(90deg,#ff3d81,#a855f7);
- transition:.5s;
+ height:100%;
+ background:linear-gradient(90deg,#ff3d81,#9b5cff);
+ transition:.4s;
 }
 
 .question{
- font-size:25px;
  text-align:center;
+ font-size:24px;
+ line-height:1.4;
  margin-bottom:20px;
- line-height:1.35;
+}
+
+input,textarea{
+ width:100%;
+ padding:15px;
+ margin-bottom:12px;
+ border-radius:15px;
+ border:1px solid rgba(255,255,255,.13);
+ outline:none;
+ background:rgba(255,255,255,.08);
+ color:#fff;
+}
+
+textarea{
+ min-height:190px;
+ resize:vertical;
 }
 
 .options{
  display:grid;
  grid-template-columns:1fr 1fr;
- gap:12px;
+ gap:11px;
 }
 
 .option{
- padding:15px 10px;
- border-radius:16px;
+ min-height:52px;
+ border-radius:15px;
  border:1px solid rgba(255,255,255,.14);
  background:rgba(255,255,255,.06);
- color:white;
+ color:#fff;
  cursor:pointer;
+ padding:12px 8px;
  transition:.25s;
 }
 
-.option:hover{
- transform:translateY(-3px);
- background:rgba(255,255,255,.13);
-}
-
 .option.selected{
- background:linear-gradient(135deg,#ff367d,#823dff);
+ background:linear-gradient(135deg,#ff3d81,#8d45ff);
  border-color:transparent;
+ transform:translateY(-2px);
 }
 
 .messageModes{
@@ -172,60 +148,75 @@ label{
 }
 
 .messageMode{
- padding:13px 8px;
- border-radius:14px;
- border:1px solid rgba(255,255,255,.15);
+ min-height:55px;
+ border-radius:15px;
+ border:1px solid rgba(255,255,255,.16);
  background:rgba(255,255,255,.06);
- color:white;
+ color:#fff;
  cursor:pointer;
 }
 
 .messageMode.selected{
- background:linear-gradient(135deg,#ff367d,#823dff);
+ background:linear-gradient(135deg,#ff3d81,#8d45ff);
 }
 
-.autoHint{
- font-size:12px;
+.hint{
  color:#aaa;
+ font-size:12px;
  text-align:center;
- margin-bottom:10px;
  line-height:1.5;
+ margin:8px 0 12px;
 }
 
-#creatorResult{
+.ganapatiBox{
  text-align:center;
+ padding:15px 5px 5px;
 }
+
+.ganapatiIcon{
+ font-size:78px;
+ animation:ganapatiGlow 2.5s infinite;
+}
+
+@keyframes ganapatiGlow{
+ 0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px #ffb347)}
+ 50%{transform:scale(1.08);filter:drop-shadow(0 0 28px #ff9f43)}
+}
+
+.ganapatiTitle{
+ font-size:28px;
+ margin:8px 0;
+}
+
+.ganapatiText{
+ color:#ccc;
+ line-height:1.7;
+ font-size:15px;
+}
+
+/* QR */
 
 #qr{
- display:flex;
- justify-content:center;
- padding:15px;
- background:white;
  width:max-content;
  margin:20px auto;
+ padding:14px;
+ background:#fff;
  border-radius:15px;
 }
 
-#qr img{
- display:block;
-}
-
-.copyBtn{
- margin-top:5px;
-}
+#qr img{display:block}
 
 .footer{
  position:fixed;
- bottom:10px;
  right:12px;
- font-size:12px;
+ bottom:9px;
  color:#aaa;
+ font-size:12px;
  z-index:100;
 }
 
-/* =========================
-   CINEMATIC SURPRISE
-========================= */
+
+/* ================= MOVIE ================= */
 
 #surprise{
  position:fixed;
@@ -233,12 +224,11 @@ label{
  display:none;
  overflow:hidden;
  background:
- radial-gradient(circle at 50% 40%,#32142b 0%,#100914 38%,#020203 100%);
+ radial-gradient(circle at 50% 35%,#35142c 0%,#120913 40%,#020203 100%);
+ z-index:500;
 }
 
-#surprise.active{
- display:block;
-}
+#surprise.active{display:block}
 
 .movieScene{
  position:absolute;
@@ -251,8 +241,8 @@ label{
  padding:25px;
  opacity:0;
  visibility:hidden;
- transition:opacity 1.8s ease;
- z-index:5;
+ transition:opacity 1.6s ease;
+ z-index:10;
 }
 
 .movieScene.show{
@@ -263,33 +253,55 @@ label{
 .sceneTitle{
  font-size:clamp(35px,10vw,75px);
  line-height:1.05;
- text-shadow:
- 0 0 15px rgba(255,100,170,.7),
- 0 0 50px rgba(255,50,130,.4);
+ text-shadow:0 0 18px rgba(255,100,170,.7);
 }
 
 .sceneSmall{
- color:#ddd;
- font-size:18px;
  max-width:650px;
- line-height:1.7;
+ color:#ddd;
+ line-height:1.8;
+ font-size:18px;
 }
 
 .glowHeart{
  font-size:110px;
- animation:heartBeat 1.7s infinite;
- filter:drop-shadow(0 0 35px #ff3b82);
+ animation:heartBeat 1.6s infinite;
+ filter:drop-shadow(0 0 35px #ff3d82);
 }
 
 @keyframes heartBeat{
  0%,100%{transform:scale(1)}
- 50%{transform:scale(1.18)}
+ 50%{transform:scale(1.17)}
 }
+
+
+/* Ganapati movie */
+
+.ganapatiMovie{
+ font-size:125px;
+ animation:ganapatiMovie 3s ease-in-out infinite;
+ filter:drop-shadow(0 0 35px rgba(255,160,60,.8));
+}
+
+@keyframes ganapatiMovie{
+ 0%,100%{transform:scale(1) translateY(0)}
+ 50%{transform:scale(1.08) translateY(-8px)}
+}
+
+.mantra{
+ font-size:22px;
+ color:#ffd7a1;
+ margin-top:15px;
+ letter-spacing:1px;
+}
+
+
+/* ready */
 
 .readyButtons{
  display:flex;
- gap:15px;
- margin-top:30px;
+ gap:13px;
+ margin-top:28px;
 }
 
 .readyButtons button{
@@ -297,14 +309,15 @@ label{
  padding:14px;
  border-radius:30px;
  border:1px solid rgba(255,255,255,.2);
- color:white;
+ color:#fff;
  background:rgba(255,255,255,.08);
  cursor:pointer;
 }
 
 .readyButtons button:first-child{
- background:linear-gradient(135deg,#ff3d81,#8b3dff);
+ background:linear-gradient(135deg,#ff3d81,#8d45ff);
 }
+
 
 /* envelope */
 
@@ -318,31 +331,28 @@ label{
 .envBack{
  position:absolute;
  inset:0;
- background:#9e315c;
+ background:#9d315b;
  border-radius:10px;
- box-shadow:0 20px 60px rgba(0,0,0,.5);
+ box-shadow:0 20px 60px rgba(0,0,0,.55);
 }
 
 .envFront{
  position:absolute;
  inset:0;
  clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);
- background:#c94472;
+ background:#c94572;
  z-index:4;
  border-radius:10px;
 }
 
 .envFlap{
  position:absolute;
- top:0;
- left:0;
- width:100%;
- height:100%;
+ inset:0;
  background:#df628b;
  clip-path:polygon(0 0,100% 0,50% 58%);
  transform-origin:top;
- z-index:5;
  transition:1.8s;
+ z-index:5;
 }
 
 .envelope.open .envFlap{
@@ -355,11 +365,11 @@ label{
  width:80%;
  height:145px;
  bottom:5px;
+ padding:20px;
  background:#fff8ed;
  color:#3b2930;
  border-radius:6px;
  z-index:2;
- padding:20px;
  font-size:17px;
  transition:2s;
 }
@@ -367,6 +377,7 @@ label{
 .envelope.open .letter{
  transform:translateY(-135px);
 }
+
 
 /* balloons */
 
@@ -377,8 +388,7 @@ label{
  border-radius:50% 50% 45% 45%;
  bottom:-120px;
  opacity:0;
- z-index:7;
- box-shadow:inset -12px -10px 20px rgba(0,0,0,.2);
+ z-index:20;
 }
 
 .balloon:after{
@@ -388,7 +398,7 @@ label{
  top:87px;
  width:1px;
  height:120px;
- background:rgba(255,255,255,.45);
+ background:rgba(255,255,255,.4);
 }
 
 .balloon.show{
@@ -397,13 +407,13 @@ label{
 }
 
 @keyframes floatBalloon{
- 0%{bottom:-120px}
- 100%{bottom:110%}
+ from{bottom:-120px}
+ to{bottom:110%}
 }
 
-.b1{left:8%;background:#ff477e}
+.b1{left:7%;background:#ff477e}
 .b2{left:25%;background:#ffd34d}
-.b3{left:45%;background:#9b5cff}
+.b3{left:44%;background:#9b5cff}
 .b4{right:23%;background:#4ddfff}
 .b5{right:7%;background:#ff72b5}
 
@@ -417,25 +427,26 @@ label{
  100%{transform:scale(0);opacity:0}
 }
 
-/* typing */
+
+/* message */
 
 .messageCard{
- width:min(700px,92vw);
- max-height:65vh;
+ width:min(720px,93vw);
+ max-height:70vh;
  overflow:auto;
  padding:30px;
  border-radius:25px;
  background:rgba(255,255,255,.07);
  border:1px solid rgba(255,255,255,.13);
- box-shadow:0 20px 80px rgba(0,0,0,.45);
- backdrop-filter:blur(14px);
+ backdrop-filter:blur(15px);
+ box-shadow:0 20px 80px rgba(0,0,0,.5);
 }
 
 .messageText{
  font-size:clamp(18px,4vw,25px);
- line-height:1.8;
- color:#f7edf2;
+ line-height:1.9;
  white-space:pre-line;
+ color:#f9edf3;
 }
 
 .cursor{
@@ -446,35 +457,21 @@ label{
  animation:blink .8s infinite;
 }
 
-@keyframes blink{
- 50%{opacity:0}
-}
-
-/* shayari */
+@keyframes blink{50%{opacity:0}}
 
 .shayari{
  margin-top:25px;
  padding:20px;
  border-left:3px solid #ff4d91;
- background:rgba(255,50,120,.07);
  border-radius:0 15px 15px 0;
- font-style:italic;
- line-height:1.9;
+ background:rgba(255,50,120,.07);
  color:#ffdbe9;
+ line-height:1.9;
+ font-style:italic;
 }
+
 
 /* final */
-
-.finalHeart{
- font-size:85px;
- animation:heartBeat 1.5s infinite;
-}
-
-.from{
- margin-top:20px;
- font-size:24px;
- color:#ffd3e3;
-}
 
 .finalOccasion{
  font-size:clamp(38px,9vw,80px);
@@ -490,34 +487,68 @@ label{
  to{background-position:300%}
 }
 
+.finalHeart{
+ font-size:90px;
+ animation:heartBeat 1.5s infinite;
+}
+
+.from{
+ margin-top:20px;
+ font-size:24px;
+ color:#ffd3e3;
+}
+
+.thankYou{
+ font-size:clamp(42px,11vw,85px);
+ background:linear-gradient(90deg,#fff,#ff8fba,#c99cff,#fff);
+ background-size:300%;
+ -webkit-background-clip:text;
+ color:transparent;
+ animation:shine 4s linear infinite;
+}
+
+.theEndBtn{
+ margin-top:35px;
+ padding:15px 45px;
+ border-radius:40px;
+ border:1px solid rgba(255,255,255,.25);
+ background:rgba(255,255,255,.08);
+ color:#fff;
+ cursor:pointer;
+ letter-spacing:3px;
+ font-size:15px;
+ transition:.3s;
+}
+
+.theEndBtn:hover{
+ background:rgba(255,255,255,.17);
+ transform:scale(1.05);
+}
+
+
 /* particles */
 
 .particle{
  position:absolute;
- width:5px;
- height:5px;
+ width:4px;
+ height:4px;
  border-radius:50%;
  background:#fff;
  opacity:.5;
  animation:particleMove linear infinite;
+ z-index:1;
 }
 
 @keyframes particleMove{
- from{
-  transform:translateY(110vh) translateX(0);
- }
- to{
-  transform:translateY(-20vh) translateX(80px);
- }
+ from{transform:translateY(110vh)}
+ to{transform:translateY(-20vh) translateX(80px)}
 }
 
 .floatHeart{
  position:absolute;
  bottom:-40px;
- font-size:20px;
- opacity:.7;
- animation:heartFloat linear forwards;
  z-index:2;
+ animation:heartFloat linear forwards;
 }
 
 @keyframes heartFloat{
@@ -537,7 +568,7 @@ label{
  width:8px;
  height:14px;
  top:-20px;
- z-index:30;
+ z-index:50;
  animation:confettiFall linear forwards;
 }
 
@@ -548,20 +579,8 @@ label{
  }
 }
 
-.fadeOut{
- animation:fadeOut 1.5s forwards;
-}
-
-@keyframes fadeOut{
- to{opacity:0}
-}
-
-@media(max-width:500px){
- .options{
-  grid-template-columns:1fr;
- }
-
- .messageModes{
+@media(max-width:520px){
+ .options,.messageModes{
   grid-template-columns:1fr;
  }
 
@@ -572,53 +591,78 @@ label{
  .envelope{
   transform:scale(.82);
  }
+
+ .ganapatiMovie{
+  font-size:95px;
+ }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= CREATOR ================= -->
+<!-- ================= START ================= -->
 
 <div id="start" class="screen active">
  <div class="box">
   <div class="logo">💌</div>
   <h1>WishCraft ❤️</h1>
+
   <p class="subtitle">
    Create a beautiful cinematic surprise<br>
-   and send it to someone special.
+   for someone special.
   </p>
-  <button class="mainBtn" onclick="startQuiz()">Create My Surprise ✨</button>
+
+  <button class="mainBtn" onclick="startQuiz()">
+   Create My Surprise ✨
+  </button>
  </div>
 </div>
 
+
+<!-- ================= QUIZ ================= -->
+
 <div id="quiz" class="screen">
  <div class="box">
+
   <div class="progress">
    <div class="progressBar" id="progressBar"></div>
   </div>
 
   <div id="questionArea"></div>
 
-  <button class="mainBtn" onclick="nextQuestion()">Continue →</button>
+  <button class="mainBtn" onclick="nextQuestion()">
+   Continue →
+  </button>
+
  </div>
 </div>
 
+
+<!-- ================= LOADING ================= -->
+
 <div id="loading" class="screen">
  <div class="box" style="text-align:center">
-  <div style="font-size:60px">✨</div>
+
+  <div style="font-size:65px">✨</div>
+
   <h2>Creating your surprise...</h2>
+
   <p class="subtitle">
-   Writing the message, preparing the animation
-   and creating your personal QR.
+   Your message, animation and personal QR
+   are being prepared ❤️
   </p>
+
  </div>
 </div>
+
+
+<!-- ================= RESULT ================= -->
 
 <div id="creatorResult" class="screen">
  <div class="box">
 
-  <div style="font-size:55px;text-align:center">🎁</div>
+  <div style="font-size:60px;text-align:center">🎁</div>
 
   <h1>Your surprise is ready ❤️</h1>
 
@@ -636,7 +680,9 @@ label{
    💚 Send on WhatsApp
   </button>
 
-  <p id="copyStatus" style="text-align:center;color:#aaa;font-size:13px"></p>
+  <p id="copyStatus"
+     style="text-align:center;color:#aaa;font-size:13px">
+  </p>
 
  </div>
 </div>
@@ -644,26 +690,54 @@ label{
 <div class="footer">Made by Sagar ❤️</div>
 
 
-<!-- ================= SURPRISE MOVIE ================= -->
+<!-- ================= MOVIE ================= -->
 
 <div id="surprise">
 
- <!-- Scene 1 -->
+ <!-- GANAPATI OPTIONAL SCENE -->
+ <div class="movieScene" id="sceneGanapati">
+
+  <div class="ganapatiMovie">🙏</div>
+
+  <div class="sceneTitle"
+       style="font-size:clamp(30px,8vw,60px)">
+   Ganapati Bappa Morya
+  </div>
+
+  <div class="mantra">
+   मंगलमूर्ति मोरया ❤️
+  </div>
+
+  <p class="sceneSmall">
+   May every new beginning be filled with
+   blessings, happiness and beautiful moments.
+  </p>
+
+ </div>
+
+
+ <!-- INTRO -->
  <div class="movieScene" id="scene1">
+
   <div class="glowHeart">❤️</div>
+
   <div class="sceneTitle" id="introName"></div>
+
   <p class="sceneSmall">
    Someone created a little world<br>
    just for you...
   </p>
+
  </div>
 
 
- <!-- Scene 2 -->
+ <!-- READY -->
  <div class="movieScene" id="scene2">
+
   <div style="font-size:70px">💫</div>
 
-  <div class="sceneTitle" style="font-size:clamp(30px,8vw,60px)">
+  <div class="sceneTitle"
+       style="font-size:clamp(30px,8vw,60px)">
    Wait...
   </div>
 
@@ -677,16 +751,25 @@ label{
   </div>
 
   <div class="readyButtons">
-   <button onclick="chooseSurprise()">Yes, open it ❤️</button>
-   <button onclick="chooseSurprise()">Of course ✨</button>
+
+   <button onclick="chooseSurprise()">
+    Yes, open it ❤️
+   </button>
+
+   <button onclick="chooseSurprise()">
+    Of course ✨
+   </button>
+
   </div>
+
  </div>
 
 
- <!-- Scene 3 -->
+ <!-- ENVELOPE -->
  <div class="movieScene" id="scene3">
 
   <div class="envelope" id="envelope">
+
    <div class="envBack"></div>
 
    <div class="letter">
@@ -697,6 +780,7 @@ label{
 
    <div class="envFlap"></div>
    <div class="envFront"></div>
+
   </div>
 
   <p class="sceneSmall">
@@ -706,7 +790,8 @@ label{
  </div>
 
 
- <!-- balloons -->
+ <!-- BALLOONS -->
+
  <div class="balloon b1" id="balloon1"></div>
  <div class="balloon b2" id="balloon2"></div>
  <div class="balloon b3" id="balloon3"></div>
@@ -714,28 +799,30 @@ label{
  <div class="balloon b5" id="balloon5"></div>
 
 
- <!-- Scene 4 -->
+ <!-- OCCASION -->
  <div class="movieScene" id="scene4">
 
   <div style="font-size:70px">🎉</div>
 
   <div class="finalOccasion" id="occasionTitle"></div>
 
-  <p class="sceneSmall" id="occasionSub">
-  </p>
+  <p class="sceneSmall" id="occasionSub"></p>
 
  </div>
 
 
- <!-- Scene 5 -->
+ <!-- MESSAGE -->
  <div class="movieScene" id="scene5">
 
   <div class="messageCard">
 
-   <div style="font-size:45px;margin-bottom:15px">💌</div>
+   <div style="font-size:45px;margin-bottom:15px">
+    💌
+   </div>
 
    <div class="messageText">
-    <span id="typingText"></span><span class="cursor"></span>
+    <span id="typingText"></span>
+    <span class="cursor"></span>
    </div>
 
    <div class="shayari" id="shayari"></div>
@@ -745,7 +832,7 @@ label{
  </div>
 
 
- <!-- Scene 6 -->
+ <!-- FINAL -->
  <div class="movieScene" id="scene6">
 
   <div class="finalHeart">❤️</div>
@@ -764,16 +851,35 @@ label{
 
  </div>
 
+
+ <!-- THANK YOU -->
+ <div class="movieScene" id="scene7">
+
+  <div style="font-size:70px">💗</div>
+
+  <div class="thankYou">
+   THANK YOU
+  </div>
+
+  <p class="sceneSmall">
+   Thank you for being part of this little story. ❤️<br>
+   Some moments are made to be remembered forever.
+  </p>
+
+  <button class="theEndBtn" onclick="endMovie()">
+   THE END
+  </button>
+
+ </div>
+
 </div>
 
 
 <script>
 
-/* ======================================
-   DATA
-====================================== */
+/* ================= DATA ================= */
 
-const questions = [
+const questions=[
 
  {
   key:"from",
@@ -832,6 +938,16 @@ const questions = [
   ]
  },
 
+ /* GANAPATI SECTION */
+
+ {
+  key:"ganapati",
+  question:"Would you like to add a Ganapati blessing? 🙏",
+  type:"ganapati"
+ },
+
+ /* MESSAGE SECTION */
+
  {
   key:"message",
   question:"Now let's create the heart of your surprise 💌",
@@ -846,9 +962,7 @@ let messageMode="manual";
 let surpriseLink="";
 
 
-/* ======================================
-   SCREEN CONTROL
-====================================== */
+/* ================= SCREEN ================= */
 
 function showScreen(id){
 
@@ -860,9 +974,7 @@ function showScreen(id){
 }
 
 
-/* ======================================
-   QUIZ
-====================================== */
+/* ================= START ================= */
 
 function startQuiz(){
 
@@ -872,18 +984,18 @@ function startQuiz(){
 
  showScreen("quiz");
  renderQuestion();
+
 }
 
+
+/* ================= RENDER ================= */
 
 function renderQuestion(){
 
  const q=questions[currentQuestion];
 
- const area=document.getElementById("questionArea");
-
- let html=`
- <div class="question">${q.question}</div>
- `;
+ let html=
+ `<div class="question">${q.question}</div>`;
 
  if(q.type==="text"){
 
@@ -898,6 +1010,7 @@ function renderQuestion(){
 
  }
 
+
  else if(q.type==="options"){
 
   html+=`<div class="options">`;
@@ -909,13 +1022,13 @@ function renderQuestion(){
     ?"selected":"";
 
    html+=`
-    <button
-     type="button"
-     class="option ${selected}"
-     onclick="selectOption('${q.key}','${o[0]}')"
-    >
-     ${o[1]}
-    </button>
+   <button
+    type="button"
+    class="option ${selected}"
+    onclick="selectOption('${q.key}','${o[0]}')"
+   >
+    ${o[1]}
+   </button>
    `;
 
   });
@@ -923,6 +1036,52 @@ function renderQuestion(){
   html+=`</div>`;
 
  }
+
+
+ else if(q.type==="ganapati"){
+
+  html+=`
+
+  <div class="ganapatiBox">
+
+   <div class="ganapatiIcon">🙏</div>
+
+   <div class="ganapatiTitle">
+    Ganapati Bappa Morya
+   </div>
+
+   <div class="ganapatiText">
+    Add a peaceful Ganapati blessing at the
+    beginning of the surprise, or skip it if you
+    don't want it.
+   </div>
+
+   <div class="options" style="margin-top:18px">
+
+    <button
+     type="button"
+     class="option ${answers.ganapati==="yes"?"selected":""}"
+     onclick="selectOption('ganapati','yes')"
+    >
+     🙏 Add Ganapati
+    </button>
+
+    <button
+     type="button"
+     class="option ${answers.ganapati==="skip"?"selected":""}"
+     onclick="selectOption('ganapati','skip')"
+    >
+     ⏭️ Skip
+    </button>
+
+   </div>
+
+  </div>
+
+  `;
+
+ }
+
 
  else if(q.type==="message"){
 
@@ -943,15 +1102,17 @@ function renderQuestion(){
     class="messageMode ${messageMode==="auto"?"selected":""}"
     onclick="setMessageMode('auto')"
    >
-    ✨ Create it for me
+    ✨ Create automatically
    </button>
 
   </div>
 
-  <div class="autoHint">
-   ${messageMode==="auto"
-    ?"A deep personalized message has been created from your answers. You can still edit it."
-    :"Don't know what to write? Let WishCraft create a message for you."}
+  <div class="hint">
+   ${
+    messageMode==="auto"
+    ? "Your deep personalized message is ready. You can edit it too. ❤️"
+    : "Don't know what to write? Choose Create automatically."
+   }
   </div>
 
   <textarea
@@ -963,38 +1124,44 @@ function renderQuestion(){
 
  }
 
- area.innerHTML=html;
+ document.getElementById("questionArea").innerHTML=html;
 
- const progress=
-  ((currentQuestion)/(questions.length-1))*100;
+ const percent=
+  (currentQuestion/(questions.length-1))*100;
 
- document.getElementById("progressBar").style.width=
-  progress+"%";
+ document.getElementById("progressBar")
+ .style.width=percent+"%";
+
 }
 
+
+/* ================= SELECT ================= */
 
 function selectOption(key,value){
 
  answers[key]=value;
 
  renderQuestion();
+
 }
 
+
+/* ================= MESSAGE MODE ================= */
 
 function setMessageMode(mode){
 
  messageMode=mode;
 
  if(mode==="auto"){
-
   answers.message=generateAutoMessage();
-
  }
 
  renderQuestion();
 
 }
 
+
+/* ================= NEXT ================= */
 
 function nextQuestion(){
 
@@ -1015,6 +1182,23 @@ function nextQuestion(){
 
  }
 
+
+ if(q.type==="options" || q.type==="ganapati"){
+
+  if(!answers[q.key]){
+
+   alert(
+    q.type==="ganapati"
+    ?"Please choose Ganapati or Skip 🙏"
+    :"Please choose one option ❤️"
+   );
+
+   return;
+  }
+
+ }
+
+
  if(q.type==="message"){
 
   const input=document.getElementById("messageInput");
@@ -1022,19 +1206,18 @@ function nextQuestion(){
   const value=input.value.trim();
 
   if(!value){
-   alert("Please create or write your message ❤️");
+
+   alert(
+    "Please write a message or choose Create automatically ❤️"
+   );
+
    return;
   }
 
   answers.message=value;
- }
-
- if(q.type==="options" && !answers[q.key]){
-
-  alert("Please choose one option ❤️");
-  return;
 
  }
+
 
  if(currentQuestion<questions.length-1){
 
@@ -1051,188 +1234,183 @@ function nextQuestion(){
 }
 
 
-/* ======================================
-   AUTOMATIC DEEP MESSAGE
-====================================== */
+/* ================= AUTO MESSAGE ================= */
 
 function generateAutoMessage(){
 
- const name=answers.to || "you";
- const from=answers.from || "someone special";
- const occasion=answers.occasion || "love";
- const nature=answers.nature || "special";
- const relation=answers.relationship || "special";
+ const name=answers.to||"you";
+ const from=answers.from||"someone special";
+ const occasion=answers.occasion||"love";
+ const nature=answers.nature||"special";
+ const relation=answers.relationship||"special";
 
  let opening="";
  let middle="";
  let feeling="";
  let ending="";
 
- /* occasion */
 
  if(occasion==="birthday"){
 
   opening=
-  `Happy Birthday, ${name}! 🎂❤️ Today is not just another date on the calendar; it is a reminder that the world became a little more beautiful because you came into it.`;
+  `Happy Birthday, ${name}! 🎂❤️ Today is more than just another date on the calendar. It is a reminder of the beautiful day someone as special as you came into this world.`;
 
   ending=
-  `I hope this new chapter of your life brings you countless reasons to smile, dreams that slowly become reality, and memories that you will want to keep forever.`;
+  `I hope this new year of your life brings you closer to your dreams, surrounds you with genuine people, fills your days with laughter, and gives you countless moments that your heart will never want to forget.`;
 
  }
 
  else if(occasion==="wedding"){
 
   opening=
-  `Wishing you a beautiful wedding, ${name}. 💍❤️ Today marks the beginning of a new chapter, filled with promises, dreams, laughter and a lifetime of memories waiting to be written.`;
+  `Wishing you a beautiful wedding, ${name}. 💍❤️ Today is the beginning of a new chapter, where two journeys slowly become one beautiful story filled with promises, memories and dreams.`;
 
   ending=
-  `May every tomorrow bring you closer, may every difficult day make your bond stronger, and may your life together always have a little more love than yesterday.`;
+  `May the years ahead bring you more understanding, more laughter, more patience and a love that becomes deeper with every sunrise and every difficult day you overcome together.`;
 
  }
 
  else if(occasion==="haldi"){
 
   opening=
-  `Happy Haldi, ${name}! 🌼💛 Today is filled with colour, laughter and the kind of beautiful memories that stay in the heart long after the celebrations are over.`;
+  `Happy Haldi, ${name}! 🌼💛 Today is filled with colour, laughter and the beautiful excitement of a new beginning. Some days become memories before we even realize how special they are.`;
 
   ending=
-  `May this beautiful beginning bring you endless happiness, unforgettable moments and a future filled with warmth, laughter and love.`;
+  `May this beautiful beginning bring endless happiness, peaceful days, unforgettable celebrations and a future that is even more beautiful than the dreams you have imagined.`;
 
  }
 
  else if(occasion==="mehndi"){
 
   opening=
-  `Happy Mehndi, ${name}! 🌿💚 May every colour, every smile and every little celebration today become a memory you will treasure for years to come.`;
+  `Happy Mehndi, ${name}! 🌿💚 May every colour, every smile and every little celebration today become a memory that stays bright in your heart for years to come.`;
 
   ending=
-  `May your hands carry beautiful colours and may your life carry even more beautiful moments.`;
+  `May your hands carry beautiful colours and may your life be filled with even more beautiful moments, meaningful relationships and reasons to smile every single day.`;
 
  }
 
  else if(occasion==="anniversary"){
 
   opening=
-  `Happy Anniversary, ${name}! 💞 Some connections become special because of time, but some become timeless because of the memories two people create together.`;
+  `Happy Anniversary, ${name}! 💞 Some relationships become beautiful because of time, but the rare ones become timeless because of the memories two people create together.`;
 
   ending=
-  `May the journey ahead bring even more laughter, deeper understanding, countless memories and a love that keeps growing quietly with every passing year.`;
+  `May the journey ahead give you more reasons to choose each other, more memories to look back on, and a bond that grows quieter, stronger and more beautiful with every passing year.`;
 
  }
 
  else if(occasion==="love"){
 
   opening=
-  `For you, ${name}. ❤️ There are some feelings that are difficult to put into ordinary words, because no sentence ever seems big enough to explain what a person truly means to your heart.`;
+  `For you, ${name}. ❤️ There are feelings that cannot be completely explained, because sometimes the heart understands something that words are simply too small to describe.`;
 
   ending=
-  `If I could give you one thing, it would be the ability to see yourself through my eyes for just a moment, so you could understand how incredibly special you are to me.`;
+  `If I could give you one gift, I would let you see yourself through my eyes for just one moment, because then you would understand how deeply special your presence has become in my life.`;
 
  }
 
  else if(occasion==="friendship"){
 
   opening=
-  `For my wonderful friend ${name}. 🤝❤️ Life gives us many people, but only a few become memories, comfort, laughter and home at the same time.`;
+  `For my wonderful friend ${name}. 🤝❤️ Life introduces us to hundreds of people, but only a few become memories, comfort, laughter and a safe place at the same time.`;
 
   ending=
-  `No matter where life takes us, I hope we always find our way back to the same laughter, the same crazy conversations and the same beautiful friendship.`;
+  `No matter where life takes us or how much everything changes, I hope we never lose the simple friendship that made so many ordinary moments feel extraordinary.`;
 
  }
 
  else{
 
   opening=
-  `Congratulations, ${name}! 🎊❤️ This moment deserves to be celebrated because you have reached something worth remembering.`;
+  `Congratulations, ${name}! 🎊❤️ This moment deserves to be remembered because every achievement carries behind it effort, patience, hope and countless moments that nobody else may have seen.`;
 
   ending=
-  `I hope this is only the beginning of many more beautiful achievements, happier days and moments that make you proud of how far you have come.`;
+  `May this beautiful moment become the beginning of many more achievements, happier days, bigger dreams and memories that make you proud whenever you look back.`;
 
  }
 
 
- /* relationship */
-
  if(relation==="partner"){
 
   middle=
-  `Having you in my life has changed the meaning of ordinary moments. Somehow, simple conversations become memories, small smiles become reasons to be happy, and even silence feels comfortable when it is shared with you.`;
+  `Having you in my life has changed the meaning of ordinary moments. A simple conversation can become a memory, a small smile can change an entire day, and even silence feels comfortable when it is shared with you.`;
 
  }
 
  else if(relation==="bestfriend"){
 
   middle=
-  `You are one of those rare people with whom I can be completely myself. From the stupidest jokes to the deepest conversations, every little memory with you has its own special place in my heart.`;
+  `You are one of those rare people with whom I can be completely myself. From the stupidest jokes to the deepest conversations, every little memory has found its own special corner in my heart.`;
 
  }
 
  else if(relation==="family"){
 
   middle=
-  `Family is not always about perfect moments; it is about having someone whose presence makes difficult days lighter and happy days even more meaningful. You are truly one of those people.`;
+  `Family is not about having perfect days. It is about having someone whose presence makes difficult days lighter and happy days even more meaningful. Your place in my life is something I will always value.`;
 
  }
 
  else if(relation==="sibling"){
 
   middle=
-  `We may tease each other, argue over silly things and drive each other crazy sometimes, but beneath all of that is a bond that I would never trade for anything in this world.`;
+  `We may tease each other, argue about the smallest things and sometimes drive each other crazy, but underneath all of that is a bond that time, distance and little arguments can never truly replace.`;
 
  }
 
  else{
 
   middle=
-  `Some people slowly become special without even realizing it. Your presence has a way of making ordinary moments feel different, warmer and somehow more meaningful.`;
+  `Some people become special without making any announcement. Slowly, through conversations, memories and little moments, they become a part of your story. Somehow, you became one of those people.`;
 
  }
 
 
- /* nature */
-
  if(nature==="cute"){
 
   feeling=
-  `And honestly, your little habits, your smile and those tiny things you probably don't even notice are some of the things that make you so unforgettable. 🥰`;
+  `And honestly, your smile, your little habits and those tiny things you probably don't even notice are exactly the things that make you so wonderfully unforgettable. 🥰`;
 
  }
 
  else if(nature==="funny"){
 
   feeling=
-  `Of course, life would probably be far too boring without your crazy side, your random moments and the laughter you somehow manage to create everywhere. 😂❤️`;
+  `And yes, life would probably be far too boring without your crazy side, your random moments and the laughter you somehow manage to create even when nobody expected it. 😂❤️`;
 
  }
 
  else if(nature==="caring"){
 
   feeling=
-  `Your caring heart is something genuinely beautiful. The way you notice little things and make people feel valued is a quality that deserves to be appreciated. 🤍`;
+  `Your caring heart is one of the most beautiful things about you. The way you notice little things and make people feel valued is something that deserves to be appreciated more often. 🤍`;
 
  }
 
  else if(nature==="romantic"){
 
   feeling=
-  `There is something about you that feels different. You have a way of making the heart pause for a moment, smile quietly and wish that certain moments could last a little longer. ❤️`;
+  `There is something about you that feels different. You have a way of making the heart pause for a moment, smile quietly and wish that certain moments could stay a little longer. ❤️`;
 
  }
 
  else if(nature==="calm"){
 
   feeling=
-  `There is a peacefulness in your presence that is difficult to explain. Somehow, even a quiet moment feels beautiful when it is connected to you. 🌙`;
+  `There is a peacefulness in your presence that is difficult to explain. Somehow, even silence feels comfortable and ordinary moments feel a little more beautiful around you. 🌙`;
 
  }
 
  else{
 
   feeling=
-  `You are simply one of those people who cannot be replaced by another. Not because you are perfect, but because there is something uniquely yours that makes you unforgettable. ✨`;
+  `You are one of those people who cannot simply be replaced by another. Not because you are perfect, but because there is something uniquely yours that makes you impossible to forget. ✨`;
 
  }
 
+
+ const shayari=getShayari(name);
 
  return `${opening}
 
@@ -1242,9 +1420,11 @@ ${feeling}
 
 ${ending}
 
-${getShayari(name,occasion)}
+${shayari}
 
-Always keep smiling, ${name}. No matter how busy life becomes, I hope you always remember that someone out there is genuinely happy that you exist.
+So whenever life gets busy, whenever things become difficult, or whenever you simply need a reason to smile, remember this little message and remember that your existence matters to someone more than you may realize.
+
+Keep smiling, ${name}. Keep being exactly who you are.
 
 With love,
 ${from} ❤️`;
@@ -1252,45 +1432,51 @@ ${from} ❤️`;
 }
 
 
-function getShayari(name,occasion){
+/* ================= SHAYARI ================= */
 
- const shayaris=[
+function getShayari(name){
 
- `“Kuch rishte lafzon se nahi, ehsaason se likhe jaate hain,
-Kuch log dil mein nahi, dil ki dhadkan mein bas jaate hain.
+ const list=[
+
+ `“Kuch rishte lafzon se nahi,
+ehsaason se likhe jaate hain.
+Kuch log dil mein nahi,
+dil ki dhadkan mein bas jaate hain.
 Tum unhi khoobsurat kahaniyon mein se ek ho,
-Jise waqt bhi chahe toh kabhi mita nahi paata.” ❤️`,
+jise waqt bhi chahe toh mita nahi paata.” ❤️`,
 
  `“Zindagi ke safar mein hazaar log milenge,
-Kuch pal ke liye aur kuch saalon ke liye.
+kuch pal ke liye aur kuch saalon ke liye.
 Par jo dil ko sach mein chhoo jaaye,
-Woh hamesha yaadon mein zinda rehte hain.” ✨`,
+woh hamesha yaadon mein zinda rehte hain.” ✨`,
 
- `“Chaand bhi khoobsurat hai, sitare bhi hazaar hain,
-Magar tumhare jaisa koi nahi, yeh dil ka iqraar hai.
-Faasle chahe kitne bhi kyun na ho jaayein,
-Kuch apne hamesha dil ke paas rehte hain.” ❤️`,
+ `“Chaand bhi khoobsurat hai,
+sitare bhi hazaar hain,
+magar tumhare jaisa koi nahi,
+yeh dil ka iqraar hai.
+Faasle chahe kitne bhi ho jaayein,
+kuch apne hamesha dil ke paas rehte hain.” ❤️`,
 
  `“Har khushi mein tera zikr ho,
-Har dua mein tera fikr ho.
+har dua mein tera fikr ho.
 Zindagi chahe jitni badal jaaye,
-Bas itna sa khwaab hai—
-Teri muskurahat hamesha barkarar rahe.” 🌙❤️`
+bas itna sa khwaab hai—
+teri muskurahat hamesha barkarar rahe.” 🌙❤️`
 
  ];
 
- const index=
-  [...name].reduce((a,c)=>a+c.charCodeAt(0),0)
-  % shayaris.length;
+ let total=0;
 
- return shayaris[index];
+ for(let i=0;i<name.length;i++){
+  total+=name.charCodeAt(i);
+ }
+
+ return list[total%list.length];
 
 }
 
 
-/* ======================================
-   CREATE QR
-====================================== */
+/* ================= CREATE ================= */
 
 function createSurprise(){
 
@@ -1299,9 +1485,13 @@ function createSurprise(){
  setTimeout(()=>{
 
   const encoded=
-   btoa(unescape(encodeURIComponent(
-    JSON.stringify(answers)
-   )));
+   btoa(
+    unescape(
+     encodeURIComponent(
+      JSON.stringify(answers)
+     )
+    )
+   );
 
   surpriseLink=
    location.origin+
@@ -1313,17 +1503,22 @@ function createSurprise(){
 
   document.getElementById("qr").innerHTML="";
 
-  new QRCode(document.getElementById("qr"),{
-   text:surpriseLink,
-   width:210,
-   height:210,
-   correctLevel:QRCode.CorrectLevel.H
-  });
+  new QRCode(
+   document.getElementById("qr"),
+   {
+    text:surpriseLink,
+    width:210,
+    height:210,
+    correctLevel:QRCode.CorrectLevel.H
+   }
+  );
 
  },2200);
 
 }
 
+
+/* ================= SHARE ================= */
 
 function copyLink(){
 
@@ -1332,6 +1527,12 @@ function copyLink(){
 
   document.getElementById("copyStatus")
   .innerText="✅ Link copied! Send it to them ❤️";
+
+ })
+ .catch(()=>{
+
+  document.getElementById("copyStatus")
+  .innerText="Copy the link from your browser address bar.";
 
  });
 
@@ -1344,16 +1545,15 @@ function shareWhatsApp(){
  `I made a little surprise for you ❤️✨\n\nOpen this:\n${surpriseLink}`;
 
  window.open(
-  "https://wa.me/?text="+encodeURIComponent(text),
+  "https://wa.me/?text="+
+  encodeURIComponent(text),
   "_blank"
  );
 
 }
 
 
-/* ======================================
-   RECEIVER
-====================================== */
+/* ================= RECEIVER ================= */
 
 function checkForWish(){
 
@@ -1376,35 +1576,37 @@ function checkForWish(){
   answers=JSON.parse(decoded);
 
   document.querySelectorAll(".screen")
-  .forEach(x=>x.style.display="none");
+   .forEach(x=>x.style.display="none");
 
   document.querySelector(".footer").style.display="none";
 
   document.getElementById("surprise")
-  .classList.add("active");
+   .classList.add("active");
 
   showSurprise();
 
- }catch(e){
+ }catch(error){
 
-  console.error(e);
+  console.error(error);
 
  }
 
 }
 
 
+/* ================= SHOW SURPRISE ================= */
+
 function showSurprise(){
 
  document.getElementById("introName")
  .innerText=
- `For ${answers.to || "Someone Special"} ❤️`;
+ `For ${answers.to||"Someone Special"} ❤️`;
 
  document.getElementById("fromText")
  .innerText=
- answers.from || "Someone special";
+ answers.from||"Someone Special";
 
- const occasionNames={
+ const titles={
   birthday:"Happy Birthday",
   wedding:"A Beautiful Beginning",
   haldi:"Happy Haldi",
@@ -1416,8 +1618,8 @@ function showSurprise(){
  };
 
  const title=
-  occasionNames[answers.occasion]
-  ||"Just For You";
+  titles[answers.occasion]||
+  "Just For You";
 
  document.getElementById("occasionTitle")
  .innerText=title;
@@ -1425,23 +1627,17 @@ function showSurprise(){
  document.getElementById("finalOccasion")
  .innerText=title;
 
- document.getElementById("occasionSub")
- .innerText=
-  `This little moment was created especially for ${answers.to || "you"}. ❤️`;
-
  runMovie();
 
 }
 
 
-/* ======================================
-   CINEMATIC MOVIE
-====================================== */
+/* ================= MOVIE ================= */
 
 function hideScenes(){
 
  document.querySelectorAll(".movieScene")
- .forEach(s=>s.classList.remove("show"));
+ .forEach(x=>x.classList.remove("show"));
 
 }
 
@@ -1452,10 +1648,11 @@ function showScene(id){
 
  setTimeout(()=>{
 
-  document.getElementById(id)
-  .classList.add("show");
+  const scene=document.getElementById(id);
 
- },300);
+  if(scene)scene.classList.add("show");
+
+ },250);
 
 }
 
@@ -1465,18 +1662,35 @@ function runMovie(){
  createParticles();
  startFloatingHearts();
 
- showScene("scene1");
+ if(answers.ganapati==="yes"){
+
+  showScene("sceneGanapati");
+
+  setTimeout(()=>{
+   showScene("scene1");
+  },6500);
+
+ }else{
+
+  showScene("scene1");
+
+ }
+
+ const introDelay=
+  answers.ganapati==="yes"
+  ?13000
+  :7000;
 
  setTimeout(()=>{
+
   showScene("scene2");
- },7000);
+
+ },introDelay);
 
 }
 
 
-/* ======================================
-   READY → ENVELOPE
-====================================== */
+/* ================= READY ================= */
 
 function chooseSurprise(){
 
@@ -1484,16 +1698,15 @@ function chooseSurprise(){
 
  setTimeout(()=>{
 
-  const envelope=
-   document.getElementById("envelope");
+  document.getElementById("envelope")
+   .classList.add("open");
 
-  envelope.classList.add("open");
-
- },1000);
+ },900);
 
  setTimeout(()=>{
 
   showScene("scene4");
+
   launchBalloons();
 
  },5000);
@@ -1501,13 +1714,11 @@ function chooseSurprise(){
 }
 
 
-/* ======================================
-   BALLOONS
-====================================== */
+/* ================= BALLOONS ================= */
 
 function launchBalloons(){
 
- const balloons=[
+ const ids=[
   "balloon1",
   "balloon2",
   "balloon3",
@@ -1515,32 +1726,27 @@ function launchBalloons(){
   "balloon5"
  ];
 
- balloons.forEach((id,index)=>{
+ ids.forEach((id,index)=>{
 
   setTimeout(()=>{
 
-   const b=document.getElementById(id);
-
-   b.classList.add("show");
+   document.getElementById(id)
+    .classList.add("show");
 
   },index*800);
 
  });
 
- /* pop one by one */
-
- balloons.forEach((id,index)=>{
+ ids.forEach((id,index)=>{
 
   setTimeout(()=>{
 
-   const b=document.getElementById(id);
-
-   b.classList.add("pop");
+   document.getElementById(id)
+    .classList.add("pop");
 
   },6500+index*650);
 
  });
-
 
  setTimeout(()=>{
 
@@ -1553,14 +1759,12 @@ function launchBalloons(){
 }
 
 
-/* ======================================
-   TYPING MESSAGE
-====================================== */
+/* ================= TYPE MESSAGE ================= */
 
 function startTypingMessage(){
 
  const text=
-  answers.message ||
+  answers.message||
   "You are one of the most special people in my life. ❤️";
 
  const output=
@@ -1574,9 +1778,7 @@ function startTypingMessage(){
 
  let i=0;
 
- /* type slowly */
-
- const interval=setInterval(()=>{
+ const timer=setInterval(()=>{
 
   if(i<text.length){
 
@@ -1587,63 +1789,71 @@ function startTypingMessage(){
 
   }else{
 
-   clearInterval(interval);
+   clearInterval(timer);
 
    setTimeout(()=>{
 
     shayariBox.innerHTML=
-     "“Aapki muskurahat hi woh roshni hai,<br>"+
-     "jo kisi bhi andheri shaam ko roshan kar de.<br>"+
-     "Kuch log sirf zindagi ka hissa nahi hote,<br>"+
-     "woh zindagi ki khoobsurat wajah ban jaate hain.” ❤️";
+    `“Aapki muskurahat hi woh roshni hai,<br>
+    jo kisi bhi andheri shaam ko roshan kar de.<br>
+    Kuch log sirf zindagi ka hissa nahi hote,<br>
+    woh zindagi ki khoobsurat wajah ban jaate hain.” ❤️`;
 
    },1800);
 
    setTimeout(()=>{
 
     showScene("scene6");
+
     createConfetti();
 
-   },8000);
+   },8500);
+
+   setTimeout(()=>{
+
+    showScene("scene7");
+
+   },14000);
 
   }
 
- },35);
+ },32);
 
 }
 
 
-/* ======================================
-   FLOATING HEARTS
-====================================== */
+/* ================= HEARTS ================= */
 
 function startFloatingHearts(){
 
  setInterval(()=>{
 
-  if(!document.getElementById("surprise")
-   .classList.contains("active"))return;
+  const surprise=
+   document.getElementById("surprise");
+
+  if(!surprise.classList.contains("active"))
+   return;
 
   const heart=
    document.createElement("div");
 
   heart.className="floatHeart";
 
+  const icons=["❤️","💕","💗","💖","✨"];
+
   heart.innerHTML=
-   ["❤️","💕","💗","💖","✨"]
-   [Math.floor(Math.random()*5)];
+   icons[Math.floor(Math.random()*icons.length)];
 
   heart.style.left=
    Math.random()*100+"%";
 
-  heart.style.animationDuration=
-   (7+Math.random()*6)+"s";
-
   heart.style.fontSize=
    (14+Math.random()*22)+"px";
 
-  document.getElementById("surprise")
-   .appendChild(heart);
+  heart.style.animationDuration=
+   (7+Math.random()*6)+"s";
+
+  surprise.appendChild(heart);
 
   setTimeout(()=>{
    heart.remove();
@@ -1654,9 +1864,7 @@ function startFloatingHearts(){
 }
 
 
-/* ======================================
-   BACKGROUND PARTICLES
-====================================== */
+/* ================= PARTICLES ================= */
 
 function createParticles(){
 
@@ -1665,8 +1873,7 @@ function createParticles(){
 
  for(let i=0;i<45;i++){
 
-  const p=
-   document.createElement("div");
+  const p=document.createElement("div");
 
   p.className="particle";
 
@@ -1679,9 +1886,6 @@ function createParticles(){
   p.style.animationDelay=
    (-Math.random()*15)+"s";
 
-  p.style.opacity=
-   (.2+Math.random()*.7);
-
   container.appendChild(p);
 
  }
@@ -1689,19 +1893,25 @@ function createParticles(){
 }
 
 
-/* ======================================
-   CONFETTI
-====================================== */
+/* ================= CONFETTI ================= */
 
 function createConfetti(){
 
  const container=
   document.getElementById("surprise");
 
+ const colors=[
+  "#ff477e",
+  "#ffd34d",
+  "#9b5cff",
+  "#4ddfff",
+  "#ffffff",
+  "#ff8ac0"
+ ];
+
  for(let i=0;i<150;i++){
 
-  const c=
-   document.createElement("div");
+  const c=document.createElement("div");
 
   c.className="confetti";
 
@@ -1709,23 +1919,15 @@ function createConfetti(){
    Math.random()*100+"%";
 
   c.style.background=
-   [
-    "#ff477e",
-    "#ffd34d",
-    "#9b5cff",
-    "#4ddfff",
-    "#ffffff",
-    "#ff8ac0"
-   ][Math.floor(Math.random()*6)];
+   colors[
+    Math.floor(Math.random()*colors.length)
+   ];
 
   c.style.animationDuration=
    (3+Math.random()*5)+"s";
 
   c.style.animationDelay=
    Math.random()*2+"s";
-
-  c.style.transform=
-   `rotate(${Math.random()*360}deg)`;
 
   container.appendChild(c);
 
@@ -1738,13 +1940,27 @@ function createConfetti(){
 }
 
 
-/* ======================================
-   SAFETY / HTML
-====================================== */
+/* ================= END ================= */
 
-function escapeHTML(str){
+function endMovie(){
 
- return String(str)
+ const surprise=
+  document.getElementById("surprise");
+
+ surprise.classList.remove("active");
+
+ surprise.innerHTML="";
+
+ document.body.style.overflow="auto";
+
+}
+
+
+/* ================= ESCAPE ================= */
+
+function escapeHTML(value){
+
+ return String(value)
   .replace(/&/g,"&amp;")
   .replace(/</g,"&lt;")
   .replace(/>/g,"&gt;")
@@ -1754,13 +1970,11 @@ function escapeHTML(str){
 }
 
 
-/* ======================================
-   START
-====================================== */
+/* ================= START ================= */
 
 checkForWish();
 
 </script>
 
 </body>
- </html>
+</html>
