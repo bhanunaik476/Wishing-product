@@ -19,7 +19,6 @@ html,body{
 }
 
 body{overflow-x:hidden}
-
 button,input,textarea{font:inherit}
 
 .screen{
@@ -48,7 +47,10 @@ button,input,textarea{font:inherit}
  margin-bottom:5px;
 }
 
-h1,h2{text-align:center;margin-top:5px}
+h1,h2{
+ text-align:center;
+ margin-top:5px
+}
 
 .subtitle{
  text-align:center;
@@ -179,8 +181,14 @@ textarea{
 }
 
 @keyframes ganapatiGlow{
- 0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px #ffb347)}
- 50%{transform:scale(1.08);filter:drop-shadow(0 0 28px #ff9f43)}
+ 0%,100%{
+  transform:scale(1);
+  filter:drop-shadow(0 0 8px #ffb347)
+ }
+ 50%{
+  transform:scale(1.08);
+  filter:drop-shadow(0 0 28px #ff9f43)
+ }
 }
 
 .ganapatiTitle{
@@ -204,7 +212,9 @@ textarea{
  border-radius:15px;
 }
 
-#qr img{display:block}
+#qr img{
+ display:block
+}
 
 .footer{
  position:fixed;
@@ -215,7 +225,6 @@ textarea{
  z-index:100;
 }
 
-
 /* ================= MOVIE ================= */
 
 #surprise{
@@ -224,11 +233,23 @@ textarea{
  display:none;
  overflow:hidden;
  background:
- radial-gradient(circle at 50% 35%,#35142c 0%,#120913 40%,#020203 100%);
+ radial-gradient(circle at 50% 35%,#35142c 0%,#120913 42%,#020203 100%);
  z-index:500;
 }
 
-#surprise.active{display:block}
+#surprise.active{
+ display:block
+}
+
+/* FX layer */
+
+.fxLayer{
+ position:absolute;
+ inset:0;
+ overflow:hidden;
+ pointer-events:none;
+ z-index:40;
+}
 
 .movieScene{
  position:absolute;
@@ -241,7 +262,7 @@ textarea{
  padding:25px;
  opacity:0;
  visibility:hidden;
- transition:opacity 1.6s ease;
+ transition:opacity 1.4s ease;
  z-index:10;
 }
 
@@ -274,8 +295,7 @@ textarea{
  50%{transform:scale(1.17)}
 }
 
-
-/* Ganapati movie */
+/* Ganapati */
 
 .ganapatiMovie{
  font-size:125px;
@@ -284,8 +304,12 @@ textarea{
 }
 
 @keyframes ganapatiMovie{
- 0%,100%{transform:scale(1) translateY(0)}
- 50%{transform:scale(1.08) translateY(-8px)}
+ 0%,100%{
+  transform:scale(1) translateY(0)
+ }
+ 50%{
+  transform:scale(1.08) translateY(-8px)
+ }
 }
 
 .mantra{
@@ -295,8 +319,7 @@ textarea{
  letter-spacing:1px;
 }
 
-
-/* ready */
+/* READY */
 
 .readyButtons{
  display:flex;
@@ -318,14 +341,14 @@ textarea{
  background:linear-gradient(135deg,#ff3d81,#8d45ff);
 }
 
-
-/* envelope */
+/* ENVELOPE */
 
 .envelope{
  position:relative;
  width:290px;
  height:190px;
  margin-bottom:35px;
+ filter:drop-shadow(0 15px 35px rgba(255,20,100,.18));
 }
 
 .envBack{
@@ -333,7 +356,6 @@ textarea{
  inset:0;
  background:#9d315b;
  border-radius:10px;
- box-shadow:0 20px 60px rgba(0,0,0,.55);
 }
 
 .envFront{
@@ -361,84 +383,142 @@ textarea{
 
 .letter{
  position:absolute;
- left:10%;
- width:80%;
- height:145px;
+ left:7%;
+ width:86%;
+ height:150px;
  bottom:5px;
- padding:20px;
+ padding:16px;
  background:#fff8ed;
  color:#3b2930;
- border-radius:6px;
+ border-radius:8px;
  z-index:2;
- font-size:17px;
+ font-size:15px;
+ overflow:hidden;
+ line-height:1.45;
  transition:2s;
 }
 
 .envelope.open .letter{
- transform:translateY(-135px);
+ transform:translateY(-140px);
 }
 
-
-/* balloons */
+/* BALLOONS */
 
 .balloon{
  position:absolute;
  width:70px;
  height:88px;
  border-radius:50% 50% 45% 45%;
- bottom:-120px;
+ bottom:-130px;
  opacity:0;
- z-index:20;
+ z-index:45;
+ box-shadow:
+  inset -10px -10px 20px rgba(0,0,0,.18),
+  0 8px 25px rgba(255,50,150,.25);
+}
+
+.balloon:before{
+ content:"";
+ position:absolute;
+ bottom:-7px;
+ left:31px;
+ border-left:5px solid transparent;
+ border-right:5px solid transparent;
+ border-top:10px solid currentColor;
 }
 
 .balloon:after{
  content:"";
  position:absolute;
  left:50%;
- top:87px;
+ top:86px;
  width:1px;
- height:120px;
- background:rgba(255,255,255,.4);
+ height:180px;
+ background:rgba(255,255,255,.55);
 }
 
 .balloon.show{
  opacity:1;
- animation:floatBalloon 5s ease-in forwards;
+ animation:floatBalloon 7s ease-in forwards;
 }
 
 @keyframes floatBalloon{
- from{bottom:-120px}
- to{bottom:110%}
+ 0%{
+  bottom:-130px;
+  transform:translateX(0) rotate(0deg);
+ }
+ 30%{
+  transform:translateX(20px) rotate(5deg);
+ }
+ 60%{
+  transform:translateX(-20px) rotate(-5deg);
+ }
+ 100%{
+  bottom:115%;
+  transform:translateX(35px) rotate(8deg);
+ }
 }
 
-.b1{left:7%;background:#ff477e}
-.b2{left:25%;background:#ffd34d}
-.b3{left:44%;background:#9b5cff}
-.b4{right:23%;background:#4ddfff}
-.b5{right:7%;background:#ff72b5}
+.b1{
+ left:6%;
+ background:#ff477e;
+ color:#ff477e
+}
+
+.b2{
+ left:24%;
+ background:#ffd34d;
+ color:#ffd34d
+}
+
+.b3{
+ left:44%;
+ background:#9b5cff;
+ color:#9b5cff
+}
+
+.b4{
+ right:23%;
+ background:#4ddfff;
+ color:#4ddfff
+}
+
+.b5{
+ right:6%;
+ background:#ff72b5;
+ color:#ff72b5
+}
 
 .balloon.pop{
- animation:popBalloon .5s forwards!important;
+ animation:popBalloon .55s forwards!important;
 }
 
 @keyframes popBalloon{
- 0%{transform:scale(1);opacity:1}
- 60%{transform:scale(1.5);opacity:.7}
- 100%{transform:scale(0);opacity:0}
+ 0%{
+  transform:scale(1);
+  opacity:1
+ }
+ 60%{
+  transform:scale(1.55);
+  opacity:.7
+ }
+ 100%{
+  transform:scale(0);
+  opacity:0
+ }
 }
 
-
-/* message */
+/* MESSAGE */
 
 .messageCard{
  width:min(720px,93vw);
- max-height:70vh;
+ max-height:78vh;
  overflow:auto;
  padding:30px;
  border-radius:25px;
- background:rgba(255,255,255,.07);
- border:1px solid rgba(255,255,255,.13);
- backdrop-filter:blur(15px);
+ background:rgba(255,255,255,.09);
+ border:1px solid rgba(255,255,255,.15);
+ backdrop-filter:blur(18px);
  box-shadow:0 20px 80px rgba(0,0,0,.5);
 }
 
@@ -447,6 +527,7 @@ textarea{
  line-height:1.9;
  white-space:pre-line;
  color:#f9edf3;
+ word-break:break-word;
 }
 
 .cursor{
@@ -457,7 +538,9 @@ textarea{
  animation:blink .8s infinite;
 }
 
-@keyframes blink{50%{opacity:0}}
+@keyframes blink{
+ 50%{opacity:0}
+}
 
 .shayari{
  margin-top:25px;
@@ -470,13 +553,63 @@ textarea{
  font-style:italic;
 }
 
+/* MUSIC */
 
-/* final */
+.musicCard{
+ width:min(500px,92vw);
+ padding:20px;
+ border-radius:24px;
+ background:rgba(255,255,255,.08);
+ border:1px solid rgba(255,255,255,.15);
+ backdrop-filter:blur(18px);
+ box-shadow:0 20px 70px rgba(0,0,0,.45);
+}
+
+.musicIcon{
+ font-size:65px;
+ animation:musicFloat 2s infinite;
+}
+
+@keyframes musicFloat{
+ 50%{
+  transform:translateY(-8px) rotate(3deg)
+ }
+}
+
+.spotifyFrame{
+ width:100%;
+ height:152px;
+ border:0;
+ border-radius:16px;
+ margin-top:18px;
+}
+
+.spotifyBtn{
+ display:block;
+ width:100%;
+ padding:14px;
+ margin-top:12px;
+ border-radius:16px;
+ text-decoration:none;
+ text-align:center;
+ background:#1ed760;
+ color:#000;
+ font-family:Arial,sans-serif;
+ font-weight:bold;
+}
+
+/* FINAL */
 
 .finalOccasion{
  font-size:clamp(38px,9vw,80px);
  font-weight:bold;
- background:linear-gradient(90deg,#fff,#ff8fba,#d49cff,#fff);
+ background:linear-gradient(
+  90deg,
+  #fff,
+  #ff8fba,
+  #d49cff,
+  #fff
+ );
  background-size:300%;
  -webkit-background-clip:text;
  color:transparent;
@@ -484,7 +617,9 @@ textarea{
 }
 
 @keyframes shine{
- to{background-position:300%}
+ to{
+  background-position:300%
+ }
 }
 
 .finalHeart{
@@ -500,7 +635,13 @@ textarea{
 
 .thankYou{
  font-size:clamp(42px,11vw,85px);
- background:linear-gradient(90deg,#fff,#ff8fba,#c99cff,#fff);
+ background:linear-gradient(
+  90deg,
+  #fff,
+  #ff8fba,
+  #c99cff,
+  #fff
+ );
  background-size:300%;
  -webkit-background-clip:text;
  color:transparent;
@@ -517,16 +658,9 @@ textarea{
  cursor:pointer;
  letter-spacing:3px;
  font-size:15px;
- transition:.3s;
 }
 
-.theEndBtn:hover{
- background:rgba(255,255,255,.17);
- transform:scale(1.05);
-}
-
-
-/* particles */
+/* PARTICLES */
 
 .particle{
  position:absolute;
@@ -534,34 +668,70 @@ textarea{
  height:4px;
  border-radius:50%;
  background:#fff;
- opacity:.5;
+ opacity:.65;
  animation:particleMove linear infinite;
  z-index:1;
+ box-shadow:0 0 8px #fff;
 }
 
 @keyframes particleMove{
- from{transform:translateY(110vh)}
- to{transform:translateY(-20vh) translateX(80px)}
+ from{
+  transform:translateY(110vh)
+ }
+ to{
+  transform:translateY(-20vh) translateX(80px)
+ }
 }
+
+/* FLOATING HEARTS */
 
 .floatHeart{
  position:absolute;
- bottom:-40px;
- z-index:2;
+ bottom:-50px;
+ z-index:44;
  animation:heartFloat linear forwards;
+ filter:drop-shadow(0 0 10px rgba(255,50,130,.6));
 }
 
 @keyframes heartFloat{
  from{
-  transform:translateY(0) rotate(0);
+  transform:translateY(0) rotate(0) scale(.8);
   opacity:0;
  }
- 15%{opacity:.8}
+ 15%{
+  opacity:.9;
+ }
  to{
-  transform:translateY(-110vh) rotate(360deg);
+  transform:translateY(-115vh) rotate(360deg) scale(1.2);
   opacity:0;
  }
 }
+
+/* HEART BURST */
+
+.burstHeart{
+ position:absolute;
+ font-size:25px;
+ z-index:48;
+ animation:burst 3s ease-out forwards;
+}
+
+@keyframes burst{
+ 0%{
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%) scale(.2);
+  opacity:1;
+ }
+ 100%{
+  left:calc(50% + var(--x));
+  top:calc(50% + var(--y));
+  transform:translate(-50%,-50%) scale(1.4) rotate(360deg);
+  opacity:0;
+ }
+}
+
+/* CONFETTI */
 
 .confetti{
  position:absolute;
@@ -579,8 +749,12 @@ textarea{
  }
 }
 
+/* MOBILE */
+
 @media(max-width:520px){
- .options,.messageModes{
+
+ .options,
+ .messageModes{
   grid-template-columns:1fr;
  }
 
@@ -595,6 +769,19 @@ textarea{
  .ganapatiMovie{
   font-size:95px;
  }
+
+ .balloon{
+  width:55px;
+  height:70px;
+ }
+
+ .balloon:after{
+  top:68px;
+ }
+
+ .messageCard{
+  padding:22px;
+ }
 }
 </style>
 </head>
@@ -604,8 +791,11 @@ textarea{
 <!-- ================= START ================= -->
 
 <div id="start" class="screen active">
+
  <div class="box">
+
   <div class="logo">💌</div>
+
   <h1>WishCraft ❤️</h1>
 
   <p class="subtitle">
@@ -616,13 +806,16 @@ textarea{
   <button class="mainBtn" onclick="startQuiz()">
    Create My Surprise ✨
   </button>
+
  </div>
+
 </div>
 
 
 <!-- ================= QUIZ ================= -->
 
 <div id="quiz" class="screen">
+
  <div class="box">
 
   <div class="progress">
@@ -636,12 +829,14 @@ textarea{
   </button>
 
  </div>
+
 </div>
 
 
 <!-- ================= LOADING ================= -->
 
 <div id="loading" class="screen">
+
  <div class="box" style="text-align:center">
 
   <div style="font-size:65px">✨</div>
@@ -649,17 +844,19 @@ textarea{
   <h2>Creating your surprise...</h2>
 
   <p class="subtitle">
-   Your message, animation and personal QR
+   Your message, animations, music and QR
    are being prepared ❤️
   </p>
 
  </div>
+
 </div>
 
 
 <!-- ================= RESULT ================= -->
 
 <div id="creatorResult" class="screen">
+
  <div class="box">
 
   <div style="font-size:60px;text-align:center">🎁</div>
@@ -685,6 +882,7 @@ textarea{
   </p>
 
  </div>
+
 </div>
 
 <div class="footer">Made by Sagar ❤️</div>
@@ -694,7 +892,13 @@ textarea{
 
 <div id="surprise">
 
- <!-- GANAPATI OPTIONAL SCENE -->
+ <!-- FX -->
+
+ <div class="fxLayer" id="fxLayer"></div>
+
+
+ <!-- GANAPATI -->
+
  <div class="movieScene" id="sceneGanapati">
 
   <div class="ganapatiMovie">🙏</div>
@@ -717,6 +921,7 @@ textarea{
 
 
  <!-- INTRO -->
+
  <div class="movieScene" id="scene1">
 
   <div class="glowHeart">❤️</div>
@@ -732,6 +937,7 @@ textarea{
 
 
  <!-- READY -->
+
  <div class="movieScene" id="scene2">
 
   <div style="font-size:70px">💫</div>
@@ -766,6 +972,7 @@ textarea{
 
 
  <!-- ENVELOPE -->
+
  <div class="movieScene" id="scene3">
 
   <div class="envelope" id="envelope">
@@ -773,9 +980,14 @@ textarea{
    <div class="envBack"></div>
 
    <div class="letter">
+
     <div style="font-size:25px">💌</div>
-    A little message,<br>
-    written especially for you...
+
+    <div id="envelopeMessage">
+     A little message,
+     written especially for you...
+    </div>
+
    </div>
 
    <div class="envFlap"></div>
@@ -800,6 +1012,7 @@ textarea{
 
 
  <!-- OCCASION -->
+
  <div class="movieScene" id="scene4">
 
   <div style="font-size:70px">🎉</div>
@@ -811,7 +1024,29 @@ textarea{
  </div>
 
 
+ <!-- MUSIC -->
+
+ <div class="movieScene" id="sceneMusic">
+
+  <div class="musicCard">
+
+   <div class="musicIcon">🎵</div>
+
+   <h2>This song is for you ❤️</h2>
+
+   <p class="sceneSmall" style="font-size:15px">
+    A little song chosen especially for this surprise.
+   </p>
+
+   <div id="spotifyPlayer"></div>
+
+  </div>
+
+ </div>
+
+
  <!-- MESSAGE -->
+
  <div class="movieScene" id="scene5">
 
   <div class="messageCard">
@@ -833,6 +1068,7 @@ textarea{
 
 
  <!-- FINAL -->
+
  <div class="movieScene" id="scene6">
 
   <div class="finalHeart">❤️</div>
@@ -853,6 +1089,7 @@ textarea{
 
 
  <!-- THANK YOU -->
+
  <div class="movieScene" id="scene7">
 
   <div style="font-size:70px">💗</div>
@@ -877,7 +1114,9 @@ textarea{
 
 <script>
 
-/* ================= DATA ================= */
+/* =====================================================
+   DATA
+===================================================== */
 
 const questions=[
 
@@ -938,23 +1177,26 @@ const questions=[
   ]
  },
 
- /* GANAPATI SECTION */
-
  {
   key:"ganapati",
   question:"Would you like to add a Ganapati blessing? 🙏",
   type:"ganapati"
  },
 
- /* MESSAGE SECTION */
-
  {
   key:"message",
   question:"Now let's create the heart of your surprise 💌",
   type:"message"
+ },
+
+ {
+  key:"song",
+  question:"Add a special song? 🎵",
+  type:"song"
  }
 
 ];
+
 
 let currentQuestion=0;
 let answers={};
@@ -962,7 +1204,9 @@ let messageMode="manual";
 let surpriseLink="";
 
 
-/* ================= SCREEN ================= */
+/* =====================================================
+   SCREEN
+===================================================== */
 
 function showScreen(id){
 
@@ -971,10 +1215,13 @@ function showScreen(id){
 
  document.getElementById(id)
  .classList.add("active");
+
 }
 
 
-/* ================= START ================= */
+/* =====================================================
+   START
+===================================================== */
 
 function startQuiz(){
 
@@ -988,7 +1235,9 @@ function startQuiz(){
 }
 
 
-/* ================= RENDER ================= */
+/* =====================================================
+   RENDER
+===================================================== */
 
 function renderQuestion(){
 
@@ -997,6 +1246,7 @@ function renderQuestion(){
  let html=
  `<div class="question">${q.question}</div>`;
 
+
  if(q.type==="text"){
 
   html+=`
@@ -1004,7 +1254,6 @@ function renderQuestion(){
    id="answerInput"
    type="text"
    placeholder="${q.placeholder}"
-   value="${escapeHTML(answers[q.key]||"")}"
   >
   `;
 
@@ -1052,8 +1301,7 @@ function renderQuestion(){
 
    <div class="ganapatiText">
     Add a peaceful Ganapati blessing at the
-    beginning of the surprise, or skip it if you
-    don't want it.
+    beginning of the surprise, or skip it.
    </div>
 
    <div class="options" style="margin-top:18px">
@@ -1077,7 +1325,6 @@ function renderQuestion(){
    </div>
 
   </div>
-
   `;
 
  }
@@ -1110,21 +1357,78 @@ function renderQuestion(){
   <div class="hint">
    ${
     messageMode==="auto"
-    ? "Your deep personalized message is ready. You can edit it too. ❤️"
-    : "Don't know what to write? Choose Create automatically."
+    ? "Your personalized message is ready. You can edit it too. ❤️"
+    : "Write anything from your heart."
    }
   </div>
 
   <textarea
    id="messageInput"
    placeholder="Write something from your heart..."
-  >${escapeHTML(answers.message||"")}</textarea>
+  ></textarea>
 
   `;
 
  }
 
+
+ else if(q.type==="song"){
+
+  html+=`
+
+  <div style="text-align:center;font-size:60px">
+   🎵
+  </div>
+
+  <p class="hint">
+   Paste a Spotify song link below.<br>
+   Example: https://open.spotify.com/track/...
+  </p>
+
+  <input
+   id="songInput"
+   type="url"
+   placeholder="Paste Spotify song link"
+   value="${escapeHTML(answers.song||"")}"
+  >
+
+  <button
+   type="button"
+   class="secondaryBtn"
+   onclick="skipSong()"
+  >
+   ⏭️ No song
+  </button>
+
+  <p class="hint">
+   Spotify playback requires the receiver to tap Play.
+  </p>
+
+  `;
+
+ }
+
+
  document.getElementById("questionArea").innerHTML=html;
+
+
+ /* restore textarea after DOM creation */
+
+ if(q.type==="text"){
+
+  document.getElementById("answerInput").value=
+   answers[q.key]||"";
+
+ }
+
+
+ if(q.type==="message"){
+
+  document.getElementById("messageInput").value=
+   answers.message||"";
+
+ }
+
 
  const percent=
   (currentQuestion/(questions.length-1))*100;
@@ -1135,7 +1439,9 @@ function renderQuestion(){
 }
 
 
-/* ================= SELECT ================= */
+/* =====================================================
+   OPTIONS
+===================================================== */
 
 function selectOption(key,value){
 
@@ -1146,7 +1452,9 @@ function selectOption(key,value){
 }
 
 
-/* ================= MESSAGE MODE ================= */
+/* =====================================================
+   MESSAGE MODE
+===================================================== */
 
 function setMessageMode(mode){
 
@@ -1161,11 +1469,33 @@ function setMessageMode(mode){
 }
 
 
-/* ================= NEXT ================= */
+/* =====================================================
+   SONG
+===================================================== */
+
+function skipSong(){
+
+ answers.song="";
+
+ currentQuestion++;
+
+ if(currentQuestion<questions.length){
+  renderQuestion();
+ }else{
+  createSurprise();
+ }
+
+}
+
+
+/* =====================================================
+   NEXT
+===================================================== */
 
 function nextQuestion(){
 
  const q=questions[currentQuestion];
+
 
  if(q.type==="text"){
 
@@ -1219,10 +1549,30 @@ function nextQuestion(){
  }
 
 
+ if(q.type==="song"){
+
+  const input=document.getElementById("songInput");
+
+  answers.song=input.value.trim();
+
+  if(
+   answers.song &&
+   !answers.song.includes("spotify.com")
+  ){
+
+   alert(
+    "Please paste a valid Spotify link 🎵"
+   );
+
+   return;
+  }
+
+ }
+
+
  if(currentQuestion<questions.length-1){
 
   currentQuestion++;
-
   renderQuestion();
 
  }else{
@@ -1234,7 +1584,9 @@ function nextQuestion(){
 }
 
 
-/* ================= AUTO MESSAGE ================= */
+/* =====================================================
+   AUTO MESSAGE
+===================================================== */
 
 function generateAutoMessage(){
 
@@ -1410,8 +1762,6 @@ function generateAutoMessage(){
  }
 
 
- const shayari=getShayari(name);
-
  return `${opening}
 
 ${middle}
@@ -1419,8 +1769,6 @@ ${middle}
 ${feeling}
 
 ${ending}
-
-${shayari}
 
 So whenever life gets busy, whenever things become difficult, or whenever you simply need a reason to smile, remember this little message and remember that your existence matters to someone more than you may realize.
 
@@ -1432,7 +1780,9 @@ ${from} ❤️`;
 }
 
 
-/* ================= SHAYARI ================= */
+/* =====================================================
+   SHAYARI
+===================================================== */
 
 function getShayari(name){
 
@@ -1476,7 +1826,9 @@ teri muskurahat hamesha barkarar rahe.” 🌙❤️`
 }
 
 
-/* ================= CREATE ================= */
+/* =====================================================
+   CREATE QR
+===================================================== */
 
 function createSurprise(){
 
@@ -1484,41 +1836,52 @@ function createSurprise(){
 
  setTimeout(()=>{
 
-  const encoded=
-   btoa(
-    unescape(
-     encodeURIComponent(
-      JSON.stringify(answers)
+  try{
+
+   const encoded=
+    btoa(
+     unescape(
+      encodeURIComponent(
+       JSON.stringify(answers)
+      )
      )
-    )
+    );
+
+   surpriseLink=
+    location.origin+
+    location.pathname+
+    "?wish="+
+    encodeURIComponent(encoded);
+
+   showScreen("creatorResult");
+
+   document.getElementById("qr").innerHTML="";
+
+   new QRCode(
+    document.getElementById("qr"),
+    {
+     text:surpriseLink,
+     width:210,
+     height:210,
+     correctLevel:QRCode.CorrectLevel.H
+    }
    );
 
-  surpriseLink=
-   location.origin+
-   location.pathname+
-   "?wish="+
-   encodeURIComponent(encoded);
+  }catch(e){
 
-  showScreen("creatorResult");
+   console.error(e);
+   alert("Something went wrong while creating the QR.");
 
-  document.getElementById("qr").innerHTML="";
+  }
 
-  new QRCode(
-   document.getElementById("qr"),
-   {
-    text:surpriseLink,
-    width:210,
-    height:210,
-    correctLevel:QRCode.CorrectLevel.H
-   }
-  );
-
- },2200);
+ },1800);
 
 }
 
 
-/* ================= SHARE ================= */
+/* =====================================================
+   SHARE
+===================================================== */
 
 function copyLink(){
 
@@ -1526,13 +1889,15 @@ function copyLink(){
  .then(()=>{
 
   document.getElementById("copyStatus")
-  .innerText="✅ Link copied! Send it to them ❤️";
+  .innerText=
+  "✅ Link copied! Send it to them ❤️";
 
  })
  .catch(()=>{
 
   document.getElementById("copyStatus")
-  .innerText="Copy the link from your browser address bar.";
+  .innerText=
+  "Copy the link from your browser address bar.";
 
  });
 
@@ -1542,7 +1907,10 @@ function copyLink(){
 function shareWhatsApp(){
 
  const text=
- `I made a little surprise for you ❤️✨\n\nOpen this:\n${surpriseLink}`;
+ `I made a little surprise for you ❤️✨
+
+Open this:
+${surpriseLink}`;
 
  window.open(
   "https://wa.me/?text="+
@@ -1553,7 +1921,9 @@ function shareWhatsApp(){
 }
 
 
-/* ================= RECEIVER ================= */
+/* =====================================================
+   RECEIVER
+===================================================== */
 
 function checkForWish(){
 
@@ -1578,10 +1948,13 @@ function checkForWish(){
   document.querySelectorAll(".screen")
    .forEach(x=>x.style.display="none");
 
-  document.querySelector(".footer").style.display="none";
+  document.querySelector(".footer")
+   .style.display="none";
 
   document.getElementById("surprise")
    .classList.add("active");
+
+  document.body.style.overflow="hidden";
 
   showSurprise();
 
@@ -1589,22 +1962,35 @@ function checkForWish(){
 
   console.error(error);
 
+  alert(
+   "This surprise link is invalid or incomplete."
+  );
+
  }
 
 }
 
 
-/* ================= SHOW SURPRISE ================= */
+/* =====================================================
+   SHOW SURPRISE
+===================================================== */
 
 function showSurprise(){
 
+ const toName=
+  answers.to||
+  "Someone Special";
+
  document.getElementById("introName")
  .innerText=
- `For ${answers.to||"Someone Special"} ❤️`;
+ `For ${toName} ❤️`;
+
 
  document.getElementById("fromText")
  .innerText=
- answers.from||"Someone Special";
+ answers.from||
+ "Someone Special";
+
 
  const titles={
   birthday:"Happy Birthday",
@@ -1617,9 +2003,11 @@ function showSurprise(){
   congrats:"Congratulations"
  };
 
+
  const title=
   titles[answers.occasion]||
   "Just For You";
+
 
  document.getElementById("occasionTitle")
  .innerText=title;
@@ -1627,12 +2015,166 @@ function showSurprise(){
  document.getElementById("finalOccasion")
  .innerText=title;
 
+
+ /* ACTUAL MESSAGE IN ENVELOPE */
+
+ document.getElementById("envelopeMessage")
+ .innerText=
+  answers.message||
+  "A little message written especially for you...";
+
+
+ /* Occasion subtitle */
+
+ document.getElementById("occasionSub")
+ .innerText=
+  getOccasionSubtitle(answers.occasion);
+
+
+ /* MUSIC */
+
+ setupSpotify();
+
+
  runMovie();
 
 }
 
 
-/* ================= MOVIE ================= */
+/* =====================================================
+   OCCASION SUBTITLE
+===================================================== */
+
+function getOccasionSubtitle(type){
+
+ const text={
+
+  birthday:
+  "Today is your day — smile, celebrate and make beautiful memories. 🎂❤️",
+
+  wedding:
+  "Two hearts, one beautiful beginning and a lifetime of memories. 💍❤️",
+
+  haldi:
+  "Colours, laughter and a beautiful new beginning. 🌼💛",
+
+  mehndi:
+  "A day filled with colour, love, laughter and beautiful memories. 🌿💚",
+
+  anniversary:
+  "Another chapter of a beautiful journey together. 💞",
+
+  love:
+  "Some feelings are simply too beautiful to fit into words. ❤️",
+
+  friendship:
+  "For a friendship that makes ordinary moments unforgettable. 🤝❤️",
+
+  congrats:
+  "A beautiful achievement deserves a beautiful celebration. 🎊❤️"
+
+ };
+
+ return text[type]||
+ "A little celebration created especially for you. ❤️";
+
+}
+
+
+/* =====================================================
+   SPOTIFY
+===================================================== */
+
+function getSpotifyTrackId(url){
+
+ if(!url)return null;
+
+ const match=
+  url.match(
+   /open\.spotify\.com\/track\/([a-zA-Z0-9]+)/
+  );
+
+ if(match)return match[1];
+
+ return null;
+
+}
+
+
+function setupSpotify(){
+
+ const player=
+  document.getElementById("spotifyPlayer");
+
+ if(!answers.song){
+
+  player.innerHTML=`
+   <p class="sceneSmall">
+    No song was added for this surprise. ❤️
+   </p>
+  `;
+
+  return;
+
+ }
+
+
+ const id=
+  getSpotifyTrackId(answers.song);
+
+
+ if(!id){
+
+  player.innerHTML=`
+   <p class="sceneSmall">
+    🎵 Song link is available below.
+   </p>
+
+   <a
+    class="spotifyBtn"
+    href="${escapeHTML(answers.song)}"
+    target="_blank"
+    rel="noopener"
+   >
+    🎵 Open Song in Spotify
+   </a>
+  `;
+
+  return;
+
+ }
+
+
+ const embed=
+  `https://open.spotify.com/embed/track/${id}?utm_source=generator&theme=0`;
+
+
+ player.innerHTML=`
+
+  <iframe
+   class="spotifyFrame"
+   src="${embed}"
+   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+   loading="lazy">
+  </iframe>
+
+  <a
+   class="spotifyBtn"
+   href="${escapeHTML(answers.song)}"
+   target="_blank"
+   rel="noopener"
+  >
+   🎵 Play Song in Spotify
+  </a>
+
+ `;
+
+}
+
+
+/* =====================================================
+   MOVIE
+===================================================== */
 
 function hideScenes(){
 
@@ -1648,11 +2190,13 @@ function showScene(id){
 
  setTimeout(()=>{
 
-  const scene=document.getElementById(id);
+  const scene=
+   document.getElementById(id);
 
-  if(scene)scene.classList.add("show");
+  if(scene)
+   scene.classList.add("show");
 
- },250);
+ },120);
 
 }
 
@@ -1668,7 +2212,7 @@ function runMovie(){
 
   setTimeout(()=>{
    showScene("scene1");
-  },6500);
+  },6000);
 
  }else{
 
@@ -1676,10 +2220,12 @@ function runMovie(){
 
  }
 
+
  const introDelay=
   answers.ganapati==="yes"
-  ?13000
-  :7000;
+  ?10500
+  :6500;
+
 
  setTimeout(()=>{
 
@@ -1690,7 +2236,9 @@ function runMovie(){
 }
 
 
-/* ================= READY ================= */
+/* =====================================================
+   READY
+===================================================== */
 
 function chooseSurprise(){
 
@@ -1701,20 +2249,21 @@ function chooseSurprise(){
   document.getElementById("envelope")
    .classList.add("open");
 
- },900);
+ },800);
+
 
  setTimeout(()=>{
 
-  showScene("scene4");
-
   launchBalloons();
 
- },5000);
+ },1800);
 
 }
 
 
-/* ================= BALLOONS ================= */
+/* =====================================================
+   BALLOONS
+===================================================== */
 
 function launchBalloons(){
 
@@ -1726,16 +2275,43 @@ function launchBalloons(){
   "balloon5"
  ];
 
+
+ /* Show balloons one by one */
+
  ids.forEach((id,index)=>{
 
   setTimeout(()=>{
 
-   document.getElementById(id)
-    .classList.add("show");
+   const b=
+    document.getElementById(id);
 
-  },index*800);
+   b.classList.remove("pop");
+   b.classList.add("show");
+
+  },index*450);
 
  });
+
+
+ /* Strong heart burst */
+
+ setTimeout(()=>{
+
+  heartBurst();
+
+ },1200);
+
+
+ /* Occasion scene */
+
+ setTimeout(()=>{
+
+  showScene("scene4");
+
+ },2500);
+
+
+ /* Pop balloons later */
 
  ids.forEach((id,index)=>{
 
@@ -1744,22 +2320,110 @@ function launchBalloons(){
    document.getElementById(id)
     .classList.add("pop");
 
-  },6500+index*650);
+  },7000+index*350);
 
  });
 
- setTimeout(()=>{
 
-  showScene("scene5");
+ /* Music */
 
-  startTypingMessage();
+ const musicTime=
+  answers.song ? 9000 : 0;
 
- },10500);
+
+ if(answers.song){
+
+  setTimeout(()=>{
+
+   showScene("sceneMusic");
+
+  },9000);
+
+
+  setTimeout(()=>{
+
+   showScene("scene5");
+   startTypingMessage();
+
+  },14500);
+
+ }else{
+
+  setTimeout(()=>{
+
+   showScene("scene5");
+   startTypingMessage();
+
+  },8500);
+
+ }
 
 }
 
 
-/* ================= TYPE MESSAGE ================= */
+/* =====================================================
+   HEART BURST
+===================================================== */
+
+function heartBurst(){
+
+ const fx=
+  document.getElementById("fxLayer");
+
+ const icons=[
+  "❤️",
+  "💕",
+  "💗",
+  "💖",
+  "💘",
+  "✨"
+ ];
+
+
+ for(let i=0;i<35;i++){
+
+  const h=
+   document.createElement("div");
+
+  h.className="burstHeart";
+
+  h.innerText=
+   icons[
+    Math.floor(
+     Math.random()*icons.length
+    )
+   ];
+
+  const angle=
+   Math.random()*Math.PI*2;
+
+  const distance=
+   100+Math.random()*300;
+
+  h.style.setProperty(
+   "--x",
+   Math.cos(angle)*distance+"px"
+  );
+
+  h.style.setProperty(
+   "--y",
+   Math.sin(angle)*distance+"px"
+  );
+
+  fx.appendChild(h);
+
+  setTimeout(()=>{
+   h.remove();
+  },3500);
+
+ }
+
+}
+
+
+/* =====================================================
+   TYPE MESSAGE
+===================================================== */
 
 function startTypingMessage(){
 
@@ -1767,124 +2431,209 @@ function startTypingMessage(){
   answers.message||
   "You are one of the most special people in my life. ❤️";
 
+
  const output=
   document.getElementById("typingText");
+
 
  const shayariBox=
   document.getElementById("shayari");
 
+
  output.innerHTML="";
  shayariBox.innerHTML="";
 
+
  let i=0;
 
- const timer=setInterval(()=>{
 
-  if(i<text.length){
+ const timer=
+  setInterval(()=>{
 
-   output.innerHTML=
-    escapeHTML(text.substring(0,i+1));
+   if(i<text.length){
 
-   i++;
+    /*
+      textContent is used instead of innerHTML.
+      This fixes the message display problem.
+    */
 
-  }else{
+    output.textContent=
+     text.substring(0,i+1);
 
-   clearInterval(timer);
+    i++;
 
-   setTimeout(()=>{
+   }else{
 
-    shayariBox.innerHTML=
-    `“Aapki muskurahat hi woh roshni hai,<br>
-    jo kisi bhi andheri shaam ko roshan kar de.<br>
-    Kuch log sirf zindagi ka hissa nahi hote,<br>
-    woh zindagi ki khoobsurat wajah ban jaate hain.” ❤️`;
+    clearInterval(timer);
 
-   },1800);
 
-   setTimeout(()=>{
+    /* Show shayari */
 
-    showScene("scene6");
+    setTimeout(()=>{
 
-    createConfetti();
+     shayariBox.innerHTML=
+      escapeHTML(
+       getShayari(
+        answers.to||
+        "you"
+       )
+      )
+      .replace(/\n/g,"<br>");
 
-   },8500);
+    },900);
 
-   setTimeout(()=>{
 
-    showScene("scene7");
+    /*
+      IMPORTANT:
+      The final scenes now wait according
+      to the actual message length.
+    */
 
-   },14000);
+    const readingTime=
+     Math.max(
+      7000,
+      Math.min(
+       18000,
+       text.length*55
+      )
+     );
 
-  }
 
- },32);
+    setTimeout(()=>{
+
+     showScene("scene6");
+
+     createConfetti();
+
+    },readingTime);
+
+
+    setTimeout(()=>{
+
+     showScene("scene7");
+
+    },readingTime+6500);
+
+   }
+
+  },28);
 
 }
 
 
-/* ================= HEARTS ================= */
+/* =====================================================
+   FLOATING HEARTS
+===================================================== */
+
+let heartTimerStarted=false;
 
 function startFloatingHearts(){
+
+ if(heartTimerStarted)return;
+
+ heartTimerStarted=true;
+
 
  setInterval(()=>{
 
   const surprise=
    document.getElementById("surprise");
 
-  if(!surprise.classList.contains("active"))
-   return;
+
+  if(
+   !surprise.classList.contains("active")
+  )return;
+
 
   const heart=
    document.createElement("div");
 
+
   heart.className="floatHeart";
 
-  const icons=["❤️","💕","💗","💖","✨"];
 
-  heart.innerHTML=
-   icons[Math.floor(Math.random()*icons.length)];
+  const icons=[
+   "❤️",
+   "💕",
+   "💗",
+   "💖",
+   "💘",
+   "✨",
+   "💞"
+  ];
+
+
+  heart.innerText=
+   icons[
+    Math.floor(
+     Math.random()*icons.length
+    )
+   ];
+
 
   heart.style.left=
    Math.random()*100+"%";
 
+
   heart.style.fontSize=
-   (14+Math.random()*22)+"px";
+   (14+Math.random()*25)+"px";
+
 
   heart.style.animationDuration=
-   (7+Math.random()*6)+"s";
+   (6+Math.random()*7)+"s";
 
-  surprise.appendChild(heart);
+
+  document
+   .getElementById("fxLayer")
+   .appendChild(heart);
+
 
   setTimeout(()=>{
-   heart.remove();
-  },14000);
 
- },900);
+   heart.remove();
+
+  },15000);
+
+
+ },550);
 
 }
 
 
-/* ================= PARTICLES ================= */
+/* =====================================================
+   PARTICLES
+===================================================== */
 
 function createParticles(){
 
  const container=
-  document.getElementById("surprise");
+  document.getElementById("fxLayer");
 
- for(let i=0;i<45;i++){
 
-  const p=document.createElement("div");
+ for(let i=0;i<70;i++){
+
+  const p=
+   document.createElement("div");
+
 
   p.className="particle";
+
 
   p.style.left=
    Math.random()*100+"%";
 
+
+  p.style.top=
+   Math.random()*100+"%";
+
+
   p.style.animationDuration=
    (8+Math.random()*15)+"s";
 
+
   p.style.animationDelay=
    (-Math.random()*15)+"s";
+
 
   container.appendChild(p);
 
@@ -1893,46 +2642,65 @@ function createParticles(){
 }
 
 
-/* ================= CONFETTI ================= */
+/* =====================================================
+   CONFETTI
+===================================================== */
 
 function createConfetti(){
 
  const container=
-  document.getElementById("surprise");
+  document.getElementById("fxLayer");
 
- const colors=[
-  "#ff477e",
-  "#ffd34d",
-  "#9b5cff",
-  "#4ddfff",
-  "#ffffff",
-  "#ff8ac0"
+
+ const symbols=[
+  "🎉",
+  "✨",
+  "💕",
+  "❤️",
+  "💖"
  ];
 
- for(let i=0;i<150;i++){
 
-  const c=document.createElement("div");
+ for(let i=0;i<70;i++){
+
+  const c=
+   document.createElement("div");
+
 
   c.className="confetti";
+
+
+  c.innerText=
+   symbols[
+    Math.floor(
+     Math.random()*symbols.length
+    )
+   ];
+
 
   c.style.left=
    Math.random()*100+"%";
 
-  c.style.background=
-   colors[
-    Math.floor(Math.random()*colors.length)
-   ];
+
+  c.style.fontSize=
+   (12+Math.random()*15)+"px";
+
 
   c.style.animationDuration=
    (3+Math.random()*5)+"s";
 
+
   c.style.animationDelay=
    Math.random()*2+"s";
 
+
   container.appendChild(c);
 
+
   setTimeout(()=>{
+
    c.remove();
+
   },9000);
 
  }
@@ -1940,23 +2708,34 @@ function createConfetti(){
 }
 
 
-/* ================= END ================= */
+/* =====================================================
+   END
+===================================================== */
 
 function endMovie(){
 
  const surprise=
   document.getElementById("surprise");
 
+
  surprise.classList.remove("active");
 
- surprise.innerHTML="";
+
+ surprise
+  .querySelectorAll(".movieScene")
+  .forEach(x=>{
+   x.classList.remove("show");
+  });
+
 
  document.body.style.overflow="auto";
 
 }
 
 
-/* ================= ESCAPE ================= */
+/* =====================================================
+   ESCAPE
+===================================================== */
 
 function escapeHTML(value){
 
@@ -1970,7 +2749,9 @@ function escapeHTML(value){
 }
 
 
-/* ================= START ================= */
+/* =====================================================
+   START
+===================================================== */
 
 checkForWish();
 
